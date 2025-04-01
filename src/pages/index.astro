@@ -1,11 +1,36 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import VimHeader from "../components/VimHeader.astro";
+import CardInfo from "../components/CardInfo.astro";
 ---
 
 <Layout>
-	<Welcome />
+    <VimHeader/>
+    <main class="grid sm:grid-cols-7 pt-8 gap-8">
+        <CardInfo hasDialog={false} className="col-span-3">
+            <span slot="title-card" class="git-branch" data-section="Personal"
+                  data-value="Experience">Experiencia</span>
+            <Fragment slot="content">
+                <p data-section="Personal" data-value="ExperienceP" id="experience-p">Trabajé como freelance por casí 2
+                    años
+                    en <i>Comercializate</i> y <i>RCPerformanceDiesel</i>.</p>
+            </Fragment>
+        </CardInfo>
+        <CardInfo hasDialog={false} className="col-span-2">
+            <span slot="title-card" class="git-branch" data-section="AboutMe"
+                  data-value="AboutMeTitle">Acerca de mí</span>
+            <Fragment slot="content">
+                <p data-section="AboutMe" data-value="First">Ingeniero en Videojuegos con experiencia en desarrollo web
+                    como FullStack y desarrollo de un compilador.</p>
+                <p data-section="AboutMe" data-value="Second">Me gusta el tema de compiladores, el desarrollo web
+                    y probar nuevas cosas.</p>
+            </Fragment>
+        </CardInfo>
+        <CardInfo hasDialog={false}>
+
+        </CardInfo>
+        <CardInfo hasDialog>
+
+        </CardInfo>
+    </main>
 </Layout>

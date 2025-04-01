@@ -1,0 +1,76 @@
+---
+import CellAirlineVim from "./CellAirlineVim.astro"
+import ButtonSelectable from "./ButtonSelectable.astro"
+---
+<header class="wrapper-vim bg-latte-base dark:bg-mocha-base grid mt-8" id="vim">
+    <div id="help"
+         class="text-latte-text dark:text-mocha-text dark:opacity-50
+         grid justify-center items-center pt-6 px-8 gap-4"
+    >
+        <span data-section="Header" data-value="HelpText" id="help-text">Presiona <samp><kbd>:</kbd></samp> para entrar al modo comando</span><br>
+        <span data-section="Header" data-value="CommandsAvailable"
+              id="commands-available">Los comandos disponibles son</span>
+        <ul class="text-xs sm:text-sm leading-9" id="list-commands">
+            <li>
+                <ButtonSelectable className="" id="set-language-spanish">
+                    <span><i>set language spanish >></i></span>
+                </ButtonSelectable>
+            </li>
+            <li>
+                <ButtonSelectable className="" id="set-language-english">
+                    <span><i>set language english >></i></span>
+                </ButtonSelectable>
+            </li>
+            <li><i><a id="download-anchor"
+                      class="border-2 border-transparent rounded-xs hover:cursor-pointer py-2" href=""
+                      target="_blank" download="">download cv >></a></i></li>
+        </ul>
+        <span data-section="Header"
+              data-value="ButtonHelp">O presiona los botones de arriba para ejecutar el comando</span>
+    </div>
+    <h1 id="title" data-section="Header" data-value="Name" data-title="Axel Nava, Desarrollador FullStack"></h1>
+    <div id="vim-airline"
+         class="text-[0.5rem] sm:text-lg grid grid-flow-col justify-between bg-latte-surface0 dark:bg-[hsl(from_var(--color-mocha-surface0)_h_s_l_/_0.7)]">
+        <div class="left flex ">
+            <CellAirlineVim isFirst isLeft
+                            className="dark:bg-mocha-green dark:text-[color:hsl(from_var(--color-mocha-text)_h_s_10)] "
+                            elementColor="green">
+                <span class="icon-vim"></span><span id="mode">Normal</span>
+            </CellAirlineVim>
+            <CellAirlineVim isLeft className="dark:bg-mocha-overlay1 dark:text-mocha-text" elementColor="gray">
+                <span class="icon-vim"></span><span>index.html</span>
+            </CellAirlineVim>
+            <CellAirlineVim isLeft className="dark:bg-mocha-surface0 dark:text-mocha-text" elementColor="grayDarker">
+                <span class="icon-vim"></span><span>porfolio</span>
+            </CellAirlineVim>
+        </div>
+        <div class="right flex">
+            <CellAirlineVim isFirst className="dark:bg-mocha-surface0" elementColor="grayDarker">
+                <span class="icon-vim"> </span><span>Top</span><span>1:1</span>
+            </CellAirlineVim>
+            <CellAirlineVim isLeft={false} isFirst={false} className="dark:bg-mocha-red dark:text-mocha-surface0"
+                            elementColor="orange">
+                <span class="icon-vim"></span><span id="time">16:46</span>
+            </CellAirlineVim>
+        </div>
+    </div>
+    <div class="vim-command-text">
+        <span data-default-text="vim" id="text-vim"></span>
+    </div>
+</header>
+
+<style>
+  .wrapper-vim {
+    font-family: "Cascadia Code", system-ui;
+    grid-template-rows: 1fr 8rem auto;
+  }
+
+
+  #list-commands > li::marker {
+    content: '-> ';
+  }
+
+  a:hover {
+    border-color: var(--color-mocha-blue);
+  }
+</style>

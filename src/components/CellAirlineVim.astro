@@ -1,0 +1,87 @@
+---
+const ElementsAirline: any = {
+    green: "green",
+    gray: "gray",
+    grayDarker: "grayDarker",
+    orange: "orange"
+}
+interface Props {
+    isFirst?: boolean;
+    isLeft?: boolean,
+    id?: string,
+    darkBgColor?: string,
+    className?: string,
+    elementColor?: string
+}
+
+let {
+    isLeft,
+    isFirst,
+    id,
+    className,
+    elementColor
+} = Astro.props;
+
+let paddingRest = !isFirst && isLeft ? "pl-[1.3em]" : "pr-[1.3em]";
+let classesAfter = isLeft
+    ? "after:border-r-[1.1em] after:h-[100%] after:right-[-1em] after:rounded-r-lg after:absolute after:z-10"
+    : "after:border-l-[1.1em] after:h-[100%] after:left-[-1em] after:rounded-l-lg after:absolute after:z-10";
+let element;
+if (elementColor) {
+    element = ElementsAirline.hasOwnProperty(elementColor) ? ElementsAirline[elementColor] : elementColor;
+}
+---
+<div class:list={[
+    className,
+    `px-[0.3rem] relative grid grid-flow-col gap-1 md:gap-2 items-center`,
+    classesAfter,
+    paddingRest,
+    {
+        green: element === ElementsAirline.green,
+        gray: element === ElementsAirline.gray,
+        grayDarker: element === ElementsAirline.grayDarker,
+        orange: element === ElementsAirline.orange,
+    }
+]} id=`${id}`>
+    <slot></slot>
+</div>
+
+<style>
+  .green::after {
+    border-color: var(--color-mocha-green);
+  }
+
+  .gray::after {
+    border-color: var(--color-mocha-overlay1);
+  }
+
+  .grayDarker::after {
+    border-color: var(--color-mocha-surface0);
+  }
+
+  .orange::after {
+    border-color: var(--color-mocha-red);
+  }
+
+  .command {
+    background-color: var(--color-mocha-peach);
+  }
+
+  .command::after {
+    border-color: var(--color-mocha-peach);
+  }
+
+  @media (prefers-color-scheme: light) {
+    .green::after {
+      border-color: var(--color-latte-green);
+    }
+
+    .gray::after {
+      border-color: var(--color-latte-overlay1);
+    }
+
+    .grayDarker::after {
+      border-color: var(--color-latte-surface0);
+    }
+  }
+</style>

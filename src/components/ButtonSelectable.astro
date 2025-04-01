@@ -1,0 +1,31 @@
+---
+interface Props {
+    className?: string,
+    id?: string,
+    isAnchor?: boolean,
+    hasAnimation?: boolean,
+    isForCard?: boolean,
+}
+const {className, id, isAnchor, hasAnimation, isForCard} = Astro.props;
+let animationClases = hasAnimation ? "transition-colors" : "";
+let clasesCard = isForCard ? "" : "";
+---
+<button class:list={[
+    className,
+    animationClases,
+    clasesCard
+]}
+        class="border-2 border-transparent  rounded-xs hover:cursor-pointer button-link" type="button" id=`${id}`>
+    <slot/>
+</button>
+
+
+<style>
+  .button-link:hover {
+    border-color: var(--color-mocha-blue);
+  }
+
+  .button-card:hover {
+    border-color: var(--color-mocha-blue);
+  }
+</style>

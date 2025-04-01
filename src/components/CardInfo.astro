@@ -1,0 +1,32 @@
+---
+import ButtonSelectable from './ButtonSelectable.astro';
+
+interface Props {
+    hasDialog: boolean,
+    className?: string,
+}
+const {hasDialog, className} = Astro.props;
+---
+<section class:list={[
+    className
+]} class="dark:bg-mocha-base dark:border-mocha-overlay1 dark:text-mocha-subtext0 px-3 backdrop-blur-sm border-2">
+    <span class="flex flex-wrap my-4 font-bold items-center gap-2 text-2xl leading-14 text-balance text-mocha-maroon">
+        <img src="" alt="git-icon">
+        <slot name="title-card"></slot>
+    </span>
+    <article class="text-xl leading-10">
+        <slot name="content"></slot>
+    </article>
+    {
+        hasDialog ?
+                <ButtonSelectable>Click para ver más >></ButtonSelectable>
+                <dialog class="text-base leading-8">
+                    <slot name="dialog-title"><p>Uoops</p></slot>
+                    <slot name="dialog-content"/>
+                    <form method="dialog">
+                        <button class="button-dialog">Cerrar</button>
+                    </form>
+                </dialog>
+            : ''
+    }
+</section>
