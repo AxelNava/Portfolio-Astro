@@ -15,6 +15,7 @@ import rust from "../assets/icons/Rust_dark.svg";
 import reactIcon from "../assets/icons/React_dark.svg";
 import tailwindIcon from "../assets/icons/tailwindcss.svg";
 import LanguageCard from "./LanguageCard.astro";
+import astroIcon from "../assets/icons/Astro_dark.svg";
 ---
 <style>
   .language-element img {
@@ -80,7 +81,7 @@ import LanguageCard from "./LanguageCard.astro";
             <span>SQLite</span>
         </div>
     </LanguageCard>
-    <LanguageCard className="md:col-span-3 md:col-start-4 md:row-start-1 " title="Tecnologías" dataSection="Knowledge"
+    <LanguageCard className=" md:col-span-3 md:col-start-1 md:row-start-2 " title="Tecnologías" dataSection="Knowledge"
                   dataValue="Techonologies">
         <div class="language-element">
             <Image src={laravelIcon} alt="mysql"/>
@@ -95,7 +96,8 @@ import LanguageCard from "./LanguageCard.astro";
             <span>Git</span>
         </div>
     </LanguageCard>
-    <LanguageCard className="md:col-span-3" title="Aprendiendo" dataSection="Knowledge" dataValue="Learning">
+    <LanguageCard className2="sm:grid-cols-4" className="md:col-span-4" title="Aprendiendo" dataSection="Knowledge"
+                  dataValue="Learning">
         <div class="language-element">
             <Image src={rust} alt="rust"/>
             <span>Rust</span>
@@ -107,6 +109,10 @@ import LanguageCard from "./LanguageCard.astro";
         <div class="language-element">
             <Image src={tailwindIcon} alt="tailwind"/>
             <span>Tailwind</span>
+        </div>
+        <div class="language-element">
+            <Image src={astroIcon} alt="astro"/>
+            <span>Astro</span>
         </div>
     </LanguageCard>
 </Fragment>
