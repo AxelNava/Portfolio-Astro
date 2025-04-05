@@ -1,0 +1,140 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "FiraCode";
+  src: url("../assets/Fonts/FiraCode/FiraCode-VF.woff") format("woff");
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "FiraCode";
+  src: url("../assets/Fonts/FiraCode/FiraCode-Bold.woff") format("woff");
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "Cascadia Code";
+  src: url("../assets/Fonts/CascadiaCode/CascadiaCode-Regular-edited.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Cascadia Code";
+  src: url("../assets/Fonts/CascadiaCode/CascadiaCode-Bold.woff2") format("woff2");
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "Cascadia Code";
+  src: url("../assets/Fonts/CascadiaCode/CascadiaCode-Italic.woff2") format("woff2");
+  font-style: italic;
+}
+
+@theme{
+  --background-color: rgb(15, 15, 15);
+  --background-color-light: #7c7f93 ;
+  --color-latte-rosewater: #dc8a78;
+  --color-latte-rosewater-hsl: hsl(10.800 58.824% 66.667%) ;
+  --color-latte-flamingo: #dd7878;
+  --color-latte-flamingo-hsl: hsl(0.000 59.763% 66.863%) ;
+  --color-latte-pink: #ea76cb;
+  --color-latte-pink-hsl: hsl(316.034 73.418% 69.020%) ;
+  --color-latte-mauve: #8839ef;
+  --color-latte-mauve-hsl: hsl(266.044 85.047% 58.039%) ;
+  --color-latte-red: #d20f39;
+  --color-latte-red-hsl: hsl(347.077 86.667% 44.118%) ;
+  --color-latte-maroon: #e64553;
+  --color-latte-maroon-hsl: hsl(354.783 76.303% 58.627%) ;
+  --color-latte-peach: #fe640b;
+  --color-latte-peach-hsl: hsl(21.975 99.184% 51.961%) ;
+  --color-latte-yellow: #df8e1d;
+  --color-latte-yellow-hsl: hsl(34.948 76.984% 49.412%) ;
+  --color-latte-green: #40a02b;
+  --color-latte-green-hsl: hsl(109.231 57.635% 39.804%) ;
+  --color-latte-teal: #179299;
+  --color-latte-teal-hsl: hsl(183.231 73.864% 34.510%) ;
+  --color-latte-sky: #04a5e5;
+  --color-latte-sky-hsl: hsl(197.067 96.567% 45.686%) ;
+  --color-latte-sapphire: #209fb5;
+  --color-latte-sapphire-hsl: hsl(188.859 69.953% 41.765%) ;
+  --color-latte-blue: #1e66f5;
+  --color-latte-blue-hsl: hsl(219.907 91.489% 53.922%) ;
+  --color-latte-lavender: #7287fd;
+  --color-latte-lavender-hsl: hsl(230.935 97.203% 71.961%) ;
+  --color-latte-text: #4c4f69;
+  --color-latte-text-hsl: hsl(233.793 16.022% 35.490%) ;
+  --color-latte-subtext1: #5c5f77;
+  --color-latte-subtext1-hsl: hsl(233.333 12.796% 41.373%) ;
+  --color-latte-subtext0: #6c6f85;
+  --color-latte-subtext0-hsl: hsl(232.800 10.373% 47.255%) ;
+  --color-latte-overlay2: #7c7f93;
+  --color-latte-overlay2-hsl: hsl(232.174 9.623% 53.137%) ;
+  --color-latte-overlay1: #8c8fa1;
+  --color-latte-overlay1-hsl: hsl(231.429 10.048% 59.020%) ;
+  --color-latte-overlay0: #9ca0b0;
+  --color-latte-overlay0-hsl: hsl(228.000 11.236% 65.098%) ;
+  --color-latte-surface2: #acb0be;
+  --color-latte-surface2-hsl: hsl(226.667 12.162% 70.980%) ;
+  --color-latte-surface1: #bcc0cc;
+  --color-latte-surface1-hsl: hsl(225.000 13.559% 76.863%) ;
+  --color-latte-surface0: #ccd0da;
+  --color-latte-surface0-hsl: hsl(222.857 15.909% 82.745%) ;
+  --color-latte-base: #eff1f5;
+  --color-latte-base-hsl: hsl(220.000 23.077% 94.902%) ;
+  --color-latte-mantle: #e6e9ef;
+  --color-latte-mantle-hsl: hsl(220.000 21.951% 91.961%) ;
+  --color-latte-crust: #dce0e8;
+  --color-latte-crust-hsl: hsl(220.000 20.690% 88.627%) ;
+
+  --color-mocha-rosewater: #f5e0dc;
+  --color-mocha-rosewater-hsl: hsl(9.600 55.556% 91.176%) ;
+  --color-mocha-flamingo: #f2cdcd;
+  --color-mocha-flamingo-hsl: hsl(0.000 58.730% 87.647%) ;
+  --color-mocha-pink: #f5c2e7;
+  --color-mocha-pink-hsl: hsl(316.471 71.831% 86.078%) ;
+  --color-mocha-mauve: #cba6f7;
+  --color-mocha-mauve-hsl: hsl(267.407 83.505% 80.980%) ;
+  --color-mocha-red: #f38ba8;
+  --color-mocha-red-hsl: hsl(343.269 81.250% 74.902%) ;
+  --color-mocha-maroon: #eba0ac;
+  --color-mocha-maroon-hsl: hsl(350.400 65.217% 77.451%) ;
+  --color-mocha-peach: #fab387;
+  --color-mocha-peach-hsl: hsl(22.957 92.000% 75.490%) ;
+  --color-mocha-yellow: #f9e2af;
+  --color-mocha-yellow-hsl: hsl(41.351 86.047% 83.137%) ;
+  --color-mocha-green: #a6e3a1;
+  --color-mocha-green-hsl: hsl(115.455 54.098% 76.078%) ;
+  --color-mocha-teal: #94e2d5;
+  --color-mocha-teal-hsl: hsl(170.000 57.353% 73.333%) ;
+  --color-mocha-sky: #89dceb;
+  --color-mocha-sky-hsl: hsl(189.184 71.014% 72.941%) ;
+  --color-mocha-sapphire: #74c7ec;
+  --color-mocha-sapphire-hsl: hsl(198.500 75.949% 69.020%) ;
+  --color-mocha-blue: #89b4fa;
+  --color-mocha-blue-hsl: hsl(217.168 91.870% 75.882%) ;
+  --color-mocha-lavender: #b4befe;
+  --color-mocha-lavender-hsl: hsl(231.892 97.368% 85.098%) ;
+  --color-mocha-text: #cdd6f4;
+  --color-mocha-text-hsl: hsl(226.154 63.934% 88.039%) ;
+  --color-mocha-subtext1: #bac2de;
+  --color-mocha-subtext1-hsl: hsl(226.667 35.294% 80.000%) ;
+  --color-mocha-subtext0: #a6adc8;
+  --color-mocha-subtext0-hsl: hsl(227.647 23.611% 71.765%) ;
+  --color-mocha-overlay2: #9399b2;
+  --color-mocha-overlay2-hsl: hsl(228.387 16.757% 63.725%) ;
+  --color-mocha-overlay1: #7f849c;
+  --color-mocha-overlay1-hsl: hsl(229.655 12.775% 55.490%) ;
+  --color-mocha-overlay0: #6c7086;
+  --color-mocha-overlay0-hsl: hsl(230.769 10.744% 47.451%) ;
+  --color-mocha-surface2: #585b70;
+  --color-mocha-surface2-hsl: hsl(232.500 12.000% 39.216%) ;
+  --color-mocha-surface1: #45475a;
+  --color-mocha-surface1-hsl: hsl(234.286 13.208% 31.176%) ;
+  --color-mocha-surface0: #313244;
+  --color-mocha-surface0-hsl: hsl(236.842 16.239% 22.941%) ;
+  --color-mocha-base: #1e1e2e;
+  --color-mocha-base-hsl: hsl(240.000 21.053% 14.902%) ;
+  --color-mocha-mantle: #181825;
+  --color-mocha-mantle-hsl: hsl(240.000 21.311% 11.961%) ;
+  --color-mocha-crust: #11111b;
+  --color-mocha-crust-hsl: hsl(240.000 22.727% 8.627%);
+}
