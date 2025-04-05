@@ -1,0 +1,22 @@
+---
+interface Props {
+    title: string,
+    dataSection: string,
+    dataValue: string,
+    className?: string,
+}
+const {title, className, dataValue, dataSection} = Astro.props
+import {Image} from "astro:assets";
+---
+<style>
+  .languages {
+    grid-template-rows: 3em 2em;
+  }
+</style>
+<article class:list={["md:col-span-2", className]} class="dark:bg-mocha-crust px-4">
+    <h3 data-section={dataSection} data-value={dataValue}
+        class="dark:text-mocha-blue my-4 md:text-[1.2rem]">{title}</h3>
+    <div class="languages grid grid-cols-2 sm:grid-cols-3 gap-4 pb-4">
+        <slot></slot>
+    </div>
+</article>

@@ -2,12 +2,24 @@
 import Layout from '../layouts/Layout.astro';
 import VimHeader from "../components/VimHeader.astro";
 import CardInfo from "../components/CardInfo.astro";
+import photo from "../assets/img/me.webp"
+import {Image} from "astro:assets"
+import linkedIn from "../assets/icons/linkedin.svg"
+import GitHub from "../assets/icons/Github_dark.svg"
+import KnowledgeSection from "../components/KnowledgeSection.astro";
+import Projects from "../components/Projects.astro";
 ---
 
 <Layout>
     <VimHeader/>
-    <main class="grid sm:grid-cols-7 pt-8 gap-8">
-        <CardInfo hasDialog={false} className="col-span-3">
+    <main class="grid md:grid-cols-7 py-8 gap-8">
+        <section
+                class="dark:bg-mocha-base dark:border-mocha-overlay1 dark:text-mocha-subtext0
+                px-3 backdrop-blur-sm border-2 sm:col-start-1 sm:col-span-2"
+        >
+            <Image src={photo} alt="me" class="max-w-40 m-auto py-8"></Image>
+        </section>
+        <CardInfo hasDialog={false} className="md:col-span-5 lg:col-span-3">
             <span slot="title-card" class="git-branch" data-section="Personal"
                   data-value="Experience">Experiencia</span>
             <Fragment slot="content">
@@ -16,7 +28,7 @@ import CardInfo from "../components/CardInfo.astro";
                     en <i>Comercializate</i> y <i>RCPerformanceDiesel</i>.</p>
             </Fragment>
         </CardInfo>
-        <CardInfo hasDialog={false} className="col-span-2">
+        <CardInfo hasDialog={false} className="md:col-span-full lg:col-span-2">
             <span slot="title-card" class="git-branch" data-section="AboutMe"
                   data-value="AboutMeTitle">Acerca de mí</span>
             <Fragment slot="content">
@@ -26,11 +38,41 @@ import CardInfo from "../components/CardInfo.astro";
                     y probar nuevas cosas.</p>
             </Fragment>
         </CardInfo>
-        <CardInfo hasDialog={false}>
-
+        <CardInfo hasDialog={false} className="row-span-2 col-span-full sm:col-span-2 md:col-span-full lg:col-span-5"
+                  classNameArticle="grid md:grid-cols-7 md:grid-rows-2 gap-4 pb-5">
+            <span slot="title-card" data-section="Knowledge" data-value="Title" class="git-branch">Conocimientos</span>
+            <KnowledgeSection slot="content"/>
         </CardInfo>
-        <CardInfo hasDialog>
-
+        <CardInfo hasDialog={false} className="md:col-span-2">
+            <span slot="title-card" data-section="Knowledge" data-value="Title" class="git-branch">Idiomas</span>
+            <Fragment slot="content">
+                <ul class="marker:content-['->_'] list-inside">
+                    <li data-section="Languages" data-value="Es">Español</li>
+                    <li data-section="Languages" data-value="En">Inglés</li>
+                </ul>
+            </Fragment>
         </CardInfo>
+        <CardInfo hasDialog={false} className="md:col-span-2 md:max-lg:col-span-5">
+            <span slot="title-card" data-section="Knowledge" data-value="Title" class="git-branch">Redes Sociales</span>
+            <Fragment slot="content">
+                <ul class="marker:content-['->_'] list-inside">
+                    <li class="mb-6"><a class="list-icon" target="_blank" href="https://www.linkedin.com/in/axel-nava-516809289/">
+                        <Image src={linkedIn} alt="LinkedIn" class="max-w-8 inline-block "/>
+                        LinkedIn
+                    </a>
+                    </li>
+                    <li><a class="list-icon" target="_blank" href="https://github.com/AxelNava">
+                        <Image src={GitHub} alt="Github" class="max-w-8 inline-block"/>
+                        Github</a></li>
+                </ul>
+            </Fragment>
+        </CardInfo>
+        <Projects className="col-span-full md:col-span-5"></Projects>
     </main>
 </Layout>
+
+<style is:global>
+  main * {
+    font-family: "FiraCode", system-ui;
+  }
+</style>

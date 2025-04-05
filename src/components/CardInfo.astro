@@ -1,32 +1,78 @@
 ---
 import ButtonSelectable from './ButtonSelectable.astro';
+import {Image} from "astro:assets"
+import projectIcon from "../assets/icons/git-folder.svg";
+import gitIcon from "../assets/icons/git-branch-lighter.svg";
 
 interface Props {
     hasDialog: boolean,
     className?: string,
+    classNameArticle?: string,
+    classNameDialog?: string,
 }
-const {hasDialog, className} = Astro.props;
+const {hasDialog, className, classNameArticle} = Astro.props;
 ---
+<style>
+  .command-prompt::after {
+    --animation-blink-duration: 1s;
+    content: "\2581";
+    z-index: 2;
+    animation-name: blink;
+    animation-duration: var(--animation-blink-duration);
+    animation-timing-function: step-end;
+    animation-iteration-count: infinite;
+    opacity: 1;
+  }
+
+  @keyframes blink {
+    0%, 100% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+</style>
 <section class:list={[
     className
 ]} class="dark:bg-mocha-base dark:border-mocha-overlay1 dark:text-mocha-subtext0 px-3 backdrop-blur-sm border-2">
     <span class="flex flex-wrap my-4 font-bold items-center gap-2 text-2xl leading-14 text-balance text-mocha-maroon">
-        <img src="" alt="git-icon">
-        <slot name="title-card"></slot>
+        <Image src={gitIcon} alt="git-icon" class="icon-prompt h-8 brightness-75 dark:brightness-100 "></Image>
+        <slot name="title-card"><span class="text-latte-subtext0 dark:text-mocha-subtext0">project</span></slot>
+        {
+            hasDialog ?
+                    <Image src={projectIcon} alt="project-icon"
+                           class="project-icon-prompt h-8 brightness-75 dark:brightness-100"></Image>
+                    <slot name="title-card2"></slot>
+                : ""
+        }
     </span>
-    <article class="text-xl leading-10">
+    <article class:list={[classNameArticle]} } class="text-xl leading-10 pb-4">
         <slot name="content"></slot>
     </article>
     {
         hasDialog ?
-                <ButtonSelectable>Click para ver más >></ButtonSelectable>
-                <dialog class="text-base leading-8">
-                    <slot name="dialog-title"><p>Uoops</p></slot>
-                    <slot name="dialog-content"/>
-                    <form method="dialog">
-                        <button class="button-dialog">Cerrar</button>
-                    </form>
+                <ButtonSelectable hasAnimation className="p-4 button-card opacity-80 mt-auto button-dialog">Da click
+                    para mostrar más >>
+                </ButtonSelectable>
+                <dialog class="dialog-element text-latte-text dark:text-mocha-text w-[90dvw] h-[80dvh] inset-[5%] backdrop:backdrop-blur-xs border-4 border-gray-900 dark:border-gray-300">
+                    <div class="grid lg:grid-cols-[1fr_50ch] gap-4 p-4">
+                        <form class="lg:col-span-2 flex justify-between" method="dialog">
+                            <span class="command-prompt  text-latte-green dark:text-mocha-green">Mostrando proyecto...</span>
+                            <button class="cursor-pointer border-2 p-2 border-mocha-text">Cerrar</button>
+                        </form>
+                        <slot name="dialog-element"></slot>
+                    </div>
                 </dialog>
             : ''
     }
 </section>
+<script>
+    let buttons = document.querySelectorAll('.button-dialog');
+    let dialogs = document.querySelectorAll('.dialog-element');
+    buttons.forEach((button, index) => {
+        button.addEventListener('click', () => {
+            dialogs[index].showModal();
+        })
+    })
+</script>

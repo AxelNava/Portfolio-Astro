@@ -15,10 +15,10 @@ let clasesCard = isForCard ? "" : "";
     animationClases,
     clasesCard
 ]}
-        class="border-2 border-transparent  rounded-xs hover:cursor-pointer button-link" type="button" id=`${id}`>
+        class="border-2 border-transparent [justify-self:end] [align-self:end] rounded-xs hover:cursor-pointer button-link"
+        type="button" id=`${id}`>
     <slot/>
 </button>
-
 
 <style>
   .button-link:hover {
@@ -26,6 +26,18 @@ let clasesCard = isForCard ? "" : "";
   }
 
   .button-card:hover {
-    border-color: var(--color-mocha-blue);
+    border-color: var(--color-mocha-green);
+  }
+
+  @media (pointer: none),(pointer: coarse) {
+
+    .button-link {
+      margin-bottom: 0.3em;
+      border-color: var(--color-mocha-blue);
+    }
+
+    .button-card {
+      border-color: var(--color-mocha-green);
+    }
   }
 </style>

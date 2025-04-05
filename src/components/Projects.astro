@@ -1,0 +1,219 @@
+---
+import {Image} from "astro:assets"
+import principalCompilador from "../assets/img/Projects/Compilador/Captura de pantalla_20230220_131721.webp";
+import compilador1 from "../assets/img/Projects/Compilador/Captura de pantalla 2025-03-21 110645.webp";
+import compilador2 from "../assets/img/Projects/Compilador/Captura de pantalla 2025-03-21 112732.webp";
+import compilador3 from "../assets/img/Projects/Compilador/Captura de pantalla_20230220_131721.webp";
+import compilador4 from "../assets/img/Projects/Compilador/Captura de pantalla 2025-03-21 114041.webp";
+import compilador5 from "../assets/img/Projects/Compilador/Captura de pantalla 2025-03-21 114116.webp";
+
+import principalDesktop from "../assets/img/Projects/Administrador_de_usuarios_creador_de_PDF\'s/Impresión2.webp";
+import desktop1 from "../assets/img/Projects/Administrador_de_usuarios_creador_de_PDF\'s/Menú.webp";
+import desktop2 from "../assets/img/Projects/Administrador_de_usuarios_creador_de_PDF\'s/Impresión1.webp";
+import desktop3 from "../assets/img/Projects/Administrador_de_usuarios_creador_de_PDF\'s/ModificarUsuario.webp";
+import desktop4 from "../assets/img/Projects/Administrador_de_usuarios_creador_de_PDF\'s/Subir información.webp";
+
+import principalWeb from "../assets/img/Projects/comercializate/Captura desde 2025-03-19 08-48-40.webp";
+import web1 from "../assets/img/Projects/comercializate/Captura desde 2025-03-19 08-48-57.webp";
+import web2 from "../assets/img/Projects/comercializate/Captura desde 2025-03-19 08-48-45.webp";
+import web3 from "../assets/img/Projects/comercializate/Captura desde 2025-03-19 08-49-10.webp";
+import web4 from "../assets/img/Projects/comercializate/Captura desde 2025-03-19 08-50-09.webp";
+import web5 from "../assets/img/Projects/comercializate/Captura desde 2025-03-19 08-49-41.webp";
+
+import principalVideogame from "../assets/img/Projects/unity/unity.webp";
+
+import CardInfo from "../components/CardInfo.astro";
+import CarrouselImages from "./CarrouselImages.astro";
+---
+<style>
+  ul > li {
+    list-style-position: inside;
+    padding-block: 0.4em;
+  }
+
+  aside > p {
+    margin-block: 1rem;
+  }
+
+  aside > h4 {
+    margin-bottom: 2rem;
+    font-weight: bold;
+  }
+
+  ul > li::marker {
+    content: "->";
+  }
+
+  aside {
+    line-height: 2;
+  }
+
+  aside p {
+    text-wrap: balance;
+  }
+
+  @media (max-width: 65em) {
+    aside > h4 {
+      margin-block: 3rem;
+    }
+  }
+</style>
+
+<CardInfo hasDialog
+          className="sm:col-span-2 md:col-span-full sm:max-md:bg--red-500 lg:col-span-4 col-start-1 flex flex-col pb-4"
+          classNameArticle="flex flex-col gap-y-4">
+<span slot="title-card2" class="git-branch" data-section="Projects" data-project="Compiler"
+      data-value="Title">Compilador</span>
+    <Fragment slot="content">
+        <Image src={principalCompilador} alt="compilador"/>
+        <p data-section="Projects" data-project="Compiler" data-value="Resume">Un compilador para un pequeño conjunto de
+            instrucciones de C# escrito en C#, la última fase de desarrollo fue el código intermedio.</p>
+    </Fragment>
+    <Fragment slot="dialog-element">
+        <CarrouselImages>
+            <Image src={compilador1} alt="imagen-compilador"/>
+            <Image src={compilador2} alt="imagen-compilador"/>
+            <Image src={compilador3} alt="imagen-compilador"/>
+            <Image src={compilador4} alt="imagen-compilador"/>
+            <Image src={compilador5} alt="imagen-compilador"/>
+        </CarrouselImages>
+
+        <aside>
+            <h4 class="title-desc" data-section="Projects" data-project="Compiler" data-value="TitleDescription">
+                Características principales</h4>
+            <ul>
+                <li data-section="Projects" data-project="Compiler" data-value="List1">Implementación de
+                    analizador léxico propio
+                </li>
+                <li data-section="Projects" data-project="Compiler" data-value="List2">Uso del algoritmo LR(1)
+                    para el analizador sintáctico
+                </li>
+                <li data-section="Projects" data-project="Compiler" data-value="List3">Implementación propia del
+                    analizador semántico
+                </li>
+                <li data-section="Projects" data-project="Compiler" data-value="List4">Generación de
+                    implementación propia del código intermedio usando código de 3 direcciones
+                </li>
+            </ul>
+            <p data-section="Projects" data-project="Compiler" data-value="Description1">Este compilador puede
+                generar el código intermedio dado el código fuente, devuelve los errores y evalúa operaciones
+                matemáticas que puedan ser evaluadas usando notación prefija. Si el código fuente dado es
+                válido, el programa crea un archivo de texto con el código intermedio.</p>
+        </aside>
+    </Fragment>
+</CardInfo>
+<CardInfo hasDialog className="sm:col-span-2 md:col-span-full lg:col-span-3 flex flex-col pb-4"
+          classNameArticle="flex flex-col gap-y-4">
+    <span slot="title-card2" class="git-branch" data-section="Projects" data-project="Desktop" data-value="Title">Aplicación de escritorio</span>
+    <Fragment slot="content">
+        <Image src={principalDesktop} alt="escritorio"/>
+        <h4 class="info-project" data-section="Projects" data-project="Desktop" data-value="Resume">Administración de
+            usuarios para generar recibos de agua en PDF, manejo de usuarios con deudas automatizadas usando SQLite como
+            base de datos.</h4>
+    </Fragment>
+    <Fragment slot="dialog-element">
+        <CarrouselImages>
+            <Image src={desktop1} alt="escritorioPrincipal"/>
+            <Image src={desktop2} alt="escritorioPrincipal"/>
+            <Image src={desktop3} alt="escritorioPrincipal"/>
+            <Image src={desktop4} alt="escritorioPrincipal"/>
+        </CarrouselImages>
+        <aside>
+            <h4 class="title-desc" data-section="Projects" data-project="Desktop" data-value="TitleDescription">
+                Características principales</h4>
+            <ul>
+                <li data-section="Projects" data-project="Desktop" data-value="List1">Administración de
+                    usuarios
+                </li>
+                <li data-section="Projects" data-project="Desktop" data-value="List2">Subida de archivos Excel y
+                    csv
+                </li>
+                <li data-section="Projects" data-project="Desktop" data-value="List3">Incremento mensual de
+                    deuda de usuarios
+                </li>
+                <li data-section="Projects" data-project="Desktop" data-value="List4">Generación de recibos en
+                    PDF
+                </li>
+            </ul>
+            <p data-section="Projects" data-project="Desktop" data-value="Description1">Esta aplicación fue
+                hecha como una propuesta para administrar los usuarios del servicio de agua, permite la carga de
+                archivos Excel propios y CSV, genera el PDF con todos los recibos o solo un rango de usuarios e
+                incremente mensualmente la deuda de cada uno de estos cuando la aplicación es abierta.</p>
+        </aside>
+    </Fragment>
+</CardInfo>
+<CardInfo hasDialog className="md:col-span-full sm:col-span-2 lg:col-span-4 flex flex-col pb-4"
+          classNameArticle="flex flex-col gap-y-4">
+    <span slot="title-card2" class="git-branch" data-section="Projects" data-project="Web" data-value="Title">Desarrollo web</span>
+    <Fragment slot="content">
+        <Image src={principalWeb} alt="web"/>
+        <p data-section="Projects" data-project="Web" data-value="Resume1">Un panel de administración para que los
+            usuarios manejen sus propios datos, con la capacidad de que un administrador pueda manejar estos datos.</p>
+        <p data-section="Projects" data-project="Web" data-value="Resume2">Este tipo de panel es replicado en la
+            aplicación de la web de RCPerformance, las capacidades de este son similares.</p>
+    </Fragment>
+    <Fragment slot="dialog-element">
+        <CarrouselImages>
+            <Image src={web1} alt="web"/>
+            <Image src={web2} alt="web"/>
+            <Image src={web3} alt="web"/>
+            <Image src={web4} alt="web"/>
+            <Image src={web5} alt="web"/>
+        </CarrouselImages>
+        <aside>
+            <h4 class="title-desc">Características principales</h4>
+            <ul>
+                <li data-section="Projects" data-project="Web" data-value="List1">~Diseño responsive</li>
+                <li data-section="Projects" data-project="Web" data-value="List2">Administración de usuarios
+                </li>
+                <li data-section="Projects" data-project="Web" data-value="List3">Manejo de datos de usuario por
+                    ellos mismo
+                </li>
+            </ul>
+            <p data-section="Projects" data-project="Web" data-value="Description">En base a este panel(estilo)
+                trabajé para RCPerformance, las características de este proyecto son</p>
+            <ul>
+                <li data-section="Projects" data-project="Web" data-value="List4">Diseño responsivo</li>
+                <li data-section="Projects" data-project="Web" data-value="List5">Sistema de permisos de usuario
+                    por roles
+                </li>
+                <li data-section="Projects" data-project="Web" data-value="List6">Generación de PDF's y
+                    Excel's
+                </li>
+                <li data-section="Projects" data-project="Web" data-value="List7">Operaciones con multiples base
+                    de datos
+                </li>
+                <li data-section="Projects" data-project="Web" data-value="List8">Edición manual de datos y
+                    administración básica de inventario
+                </li>
+            </ul>
+        </aside>
+    </Fragment>
+</CardInfo>
+<CardInfo hasDialog className="md:col-span-full sm:col-span-2 lg:col-span-3 flex flex-col pb-4"
+          classNameArticle="flex flex-col gap-y-4">
+    <span slot="title-card2" class="git-branch" data-section="Projects" data-project="Videogame" data-value="Title">Pianista en Escritorio</span>
+    <Fragment slot="content">
+        <Image src={principalVideogame} alt="videojuego"/>
+        <p data-section="Projects" data-project="VideoGames" data-value="Resume">Pequeña adaptación del videojuego mobil
+            "Pianista" para escritorio, este juego es un intento de replicar las mecánicas usando archivos MIDI.</p>
+    </Fragment>
+    <Fragment slot="dialog-element">
+        <CarrouselImages>
+            <Image src={principalVideogame} alt="videojuego"/>
+        </CarrouselImages>
+        <aside>
+            <h4 class="title-desc">Características principales</h4>
+            <ul>
+                <li data-section="Projects" data-project="VideoGames" data-value="List1">Uso de archivos MIDI
+                </li>
+                <li data-section="Projects" data-project="VideoGames" data-value="List2">Jugabilidad con el
+                    teclado
+                </li>
+            </ul>
+            <p data-section="Projects" data-project="VideoGames" data-value="Description">Este juego fue
+                desarrollado con Unity, usando archivos MIDI creados de mi propia cuenta, y permitiendo la
+                captura de multiples teclas presionadas al mismo tiempo.</p>
+        </aside>
+    </Fragment>
+</CardInfo>

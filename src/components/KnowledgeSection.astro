@@ -1,0 +1,112 @@
+---
+import {Image} from "astro:assets"
+import csharp from "../assets/icons/csharp.svg";
+import phpDark from "../assets/icons/Php_dark.svg";
+import php from "../assets/icons/Php_light.svg";
+import jsIcon from "../assets/icons/javascript.svg";
+import htmlIcon from "../assets/icons/html5.svg";
+import cssIcon from "../assets/icons/css_old.svg";
+import mysqlIcon from "../assets/icons/mysql.svg";
+import sqliteIcon from "../assets/icons/sqlite.svg";
+import laravelIcon from "../assets/icons/laravel.svg";
+import unityIcon from "../assets/icons/Unity_dark.svg";
+import gitIcon from "../assets/icons/git.svg";
+import rust from "../assets/icons/Rust_dark.svg";
+import reactIcon from "../assets/icons/React_dark.svg";
+import tailwindIcon from "../assets/icons/tailwindcss.svg";
+import LanguageCard from "./LanguageCard.astro";
+---
+<style>
+  .language-element img {
+    max-width: clamp(2em, 4.5cqi - 1rem, 3em);
+  }
+
+  .language-element span {
+    font-size: 1rem;
+  }
+
+  .language-element {
+    display: grid;
+    grid-template-rows: subgrid;
+    grid-row: span 2;
+    place-content: start;
+    justify-items: center;
+  }
+
+  .language-element > :nth-child(1) {
+    align-self: center;
+  }
+
+  @media (max-width: 40em) {
+    .language-element {
+      place-content: center;
+    }
+  }
+
+</style>
+<Fragment>
+    <LanguageCard className="md:col-span-3" title="Lenguajes de programación" dataSection="Knowledge"
+                  dataValue="TitleProgramming">
+        <div class="language-element">
+            <Image src={phpDark} alt="php"></Image>
+            <span>PHP</span>
+        </div>
+        <div class="language-element">
+            <Image src={csharp} alt="c#" loading="lazy"/>
+            <span>C#</span>
+        </div>
+        <div class="language-element">
+            <Image src={jsIcon} alt="js"/>
+            <span>JavaScript</span>
+        </div>
+    </LanguageCard>
+    <LanguageCard title="Desarrollo Web" dataSection="Knowledge" dataValue="Web">
+        <div class="language-element">
+            <Image src={htmlIcon} alt="html"/>
+            <span>HTML</span>
+        </div>
+        <div class="language-element">
+            <Image src={cssIcon} alt="css"/>
+            <span>CSS</span>
+        </div>
+    </LanguageCard>
+    <LanguageCard title="Base de datos" dataSection="Knowledge" dataValue="DataBase">
+        <div class="language-element">
+            <Image src={mysqlIcon} alt="mysql"/>
+            <span>MySQL</span>
+        </div>
+        <div class="language-element">
+            <Image src={sqliteIcon} alt="sqlite"/>
+            <span>SQLite</span>
+        </div>
+    </LanguageCard>
+    <LanguageCard className="md:col-span-3 md:col-start-4 md:row-start-1 " title="Tecnologías" dataSection="Knowledge"
+                  dataValue="Techonologies">
+        <div class="language-element">
+            <Image src={laravelIcon} alt="mysql"/>
+            <span>Laravel</span>
+        </div>
+        <div class="language-element">
+            <Image src={unityIcon} alt="mysql"/>
+            <span>Unity</span>
+        </div>
+        <div class="language-element">
+            <Image src={gitIcon} alt="mysql"/>
+            <span>Git</span>
+        </div>
+    </LanguageCard>
+    <LanguageCard className="md:col-span-3" title="Aprendiendo" dataSection="Knowledge" dataValue="Learning">
+        <div class="language-element">
+            <Image src={rust} alt="rust"/>
+            <span>Rust</span>
+        </div>
+        <div class="language-element">
+            <Image src={reactIcon} alt="react"/>
+            <span>React</span>
+        </div>
+        <div class="language-element">
+            <Image src={tailwindIcon} alt="tailwind"/>
+            <span>Tailwind</span>
+        </div>
+    </LanguageCard>
+</Fragment>

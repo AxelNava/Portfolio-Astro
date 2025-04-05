@@ -1,0 +1,189 @@
+---
+
+---
+<style>
+  :global(.selected-navigation) {
+    background-color: light-dark(var(--color-latte-peach), var(--color-mocha-peach));
+  }
+</style>
+<div class="carrousel relative">
+    <div
+            class="slider flex overflow-x-auto snap-mandatory snap-x scroll-smooth aspect-video [scrollbar-width:none]
+            mb-4 [&_img]:snap-start [&_img]:object-contain [&_img]:grow-[1] [&_img]:shrink-0 [&_img]:basis-[100%]"
+    >
+        <slot></slot>
+    </div>
+    <nav class="navigation flex absolute gap-x-2 sm:gap-x-8 z-10 pb-2 w-full justify-center
+    [&>a]:p-2 [&>a]:hover:bg-mocha-blue [&>a]:transition-colors [&>a]:cursor-pointer [&>a]:bg-white [&>a]:mx-2 [&>a]:border-white [&>a]:rounded"></nav>
+</div>
+
+<script>
+    let navigations = document.querySelectorAll(".navigation");
+    let imagesParent = document.querySelectorAll(".slider");
+    imagesParent.forEach((parent, index) => {
+        let images = parent.querySelectorAll("img");
+        let numImages = images.length;
+        let fragment = document.createDocumentFragment();
+        for (let i = 0; i < numImages; i++) {
+            let anchor = document.createElement("a");
+            anchor.style.content = '""';
+            anchor.classList.add("navigation-item");
+
+            fragment.appendChild(anchor);
+        }
+        navigations[index].appendChild(fragment);
+    })
+    navigations.forEach(navigation => {
+        if (navigation === null) {
+            return;
+        }
+        let imageSlider = navigation.parentElement.querySelector(".slider")
+        if (imageSlider === null) {
+            return
+        }
+        let images = imageSlider.querySelectorAll("img")
+        let anchors = navigation.querySelectorAll("a")
+        let currentIndex = 0;
+        let isDragging = false
+        let startPosition = 0;
+        let previousIndex = 0;
+        let touchStartX = 0
+        let touchEndX = 0
+        let isSwiping = false;
+        if (images.length === 1) {
+            return
+        }
+
+        anchors[currentIndex].classList.add("selected-navigation");
+
+        anchors.forEach((anchor, index) => {
+            anchor.addEventListener("click", () => {
+                if (images[index]) {
+                    currentIndex = goToImage(anchors, images, index, navigation);
+                }
+            })
+        })
+
+        imageSlider.addEventListener("mousedown", (e) => {
+            isDragging = true;
+            startPosition = e.clientX;
+            previousIndex = currentIndex
+            isSwiping = false
+        })
+        imageSlider.addEventListener("mousemove", (e) => {
+            if (!isDragging) return;
+            let deltaX = e.clientX - previousIndex;
+            if (Math.abs(deltaX) > 10) {
+                isSwiping = true;
+                console.log(isSwiping)
+            }
+        })
+        const resetDrag = (e) => {
+            if (!isDragging) return;
+            isDragging = false;
+
+            let movedSlides = Math.abs((e.clientX - startPosition) / imageSlider.offsetWidth)
+            //Mínimo para poder desplazarse
+            let limitSwipe = 0.3
+            if (isSwiping && movedSlides > limitSwipe) {
+                //Arrastra a la izquierda
+                if (e.clientX < startPosition) {
+                    currentIndex = goToImage(anchors, images, currentIndex - 1, navigation)
+                }
+                //Arrastra a la derecha
+                if (e.clientX > startPosition) {
+                    currentIndex = goToImage(anchors, images, currentIndex + 1, navigation)
+                }
+            }
+            startPosition = 0;
+            isSwiping = false;
+        }
+        imageSlider.addEventListener("mouseup", resetDrag)
+        imageSlider.addEventListener("mouseleave", resetDrag);
+        imageSlider.addEventListener("wheel", (e) => {
+            let targetIndex;
+            let isTrackpad = false;
+            if (e.deltaY) {
+                if (e.deltaY === (e.deltaY * -3)) {
+                    isTrackpad = true;
+                }
+            } else if (e.deltaMode === 0) {
+                isTrackpad = true;
+            }
+            //Va hacia abajo, entonces desliza hacia la derecha
+            if (e.deltaY > 0 || (e.deltaX > 0)) {
+                targetIndex = currentIndex + 1
+            } else if (e.deltaY < 0 || (e.deltaX < 0)) {
+                //Va hacia arriba, entonces desliza hacia la izquierda
+                targetIndex = currentIndex - 1
+            } else {
+                return
+            }
+            e.preventDefault()
+            currentIndex = goToImage(anchors, images, targetIndex, navigation, isTrackpad)
+        })
+
+        // Touch events para mobiles
+        imageSlider.addEventListener('touchstart', (e) => {
+            touchStartX = e.touches[0].clientX;
+            touchEndX = touchStartX; // Inicializar touchEndX
+            isDragging = true; // Considerar el toque como un inicio de arrastre
+            isSwiping = false;
+        });
+
+        imageSlider.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            touchEndX = e.touches[0].clientX;
+            const touchDiff = touchEndX - touchStartX;
+            if (Math.abs(touchDiff) > 10) {
+                isSwiping = true;
+            }
+        });
+
+        imageSlider.addEventListener('touchend', (e) => {
+            if (!isDragging) return;
+            isDragging = false;
+            const touchDiff = touchEndX - touchStartX;
+            const sensitivity = 10; // Ajusta según sea necesario
+
+            if (isSwiping && Math.abs(touchDiff) > sensitivity) {
+                if (touchDiff < 0) {
+                    currentIndex = goToImage(anchors, images, currentIndex + 1, navigation);
+                } else {
+                    currentIndex = goToImage(anchors, images, currentIndex - 1, navigation);
+                }
+            }
+            isSwiping = false;
+            resetDrag(e)
+        });
+    })
+
+    function goToImage(anchors, images,
+                       index, navigation, isTrackpad = false) {
+        if (index < 0) {
+            index = 0;
+        } else if (index > images.length - 1) {
+            index = images.length - 1;
+        }
+        let targetImage = images[index];
+        let targetAnchor = anchors[index];
+        if (isTrackpad) {
+            if (targetAnchor) {
+                changeSelectedAnchor(targetAnchor, navigation)
+            }
+        }
+        if (targetImage) {
+            targetImage.scrollIntoView({inline: "start"})
+            changeSelectedAnchor(targetAnchor, navigation)
+        }
+        return index;
+    }
+
+    function changeSelectedAnchor(elementSelected, navigationElement) {
+        let selectedBefore = navigationElement.querySelector(".selected-navigation");
+        if (selectedBefore) {
+            selectedBefore.classList.remove("selected-navigation");
+        }
+        elementSelected.classList.add("selected-navigation")
+    }
+</script>
