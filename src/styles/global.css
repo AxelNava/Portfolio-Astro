@@ -137,4 +137,14 @@
   --color-mocha-mantle-hsl: hsl(240.000 21.311% 11.961%) ;
   --color-mocha-crust: #11111b;
   --color-mocha-crust-hsl: hsl(240.000 22.727% 8.627%);
+
+  --animate-blink: blink 1s step-end infinite;
+  @keyframes blink {
+    0%, 100% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
 }

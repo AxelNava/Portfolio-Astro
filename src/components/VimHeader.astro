@@ -22,19 +22,23 @@ import ButtonSelectable from "./ButtonSelectable.astro"
                 </ButtonSelectable>
             </li>
             <li><i><a id="download-anchor"
-                      class="border-2 border-transparent rounded-xs hover:cursor-pointer py-2" href=""
-                      target="_blank" download="">download cv >></a></i></li>
+                      class="border-2 border-transparent rounded-xs hover:cursor-pointer py-2"
+                      href="/Nava%20Palacios%20Axel%20-%20CV.pdf" type="application/pdf"
+                      target="_blank" download>download cv >></a></i></li>
         </ul>
         <span data-section="Header"
               data-value="ButtonHelp">O presiona los botones de arriba para ejecutar el comando</span>
     </div>
-    <h1 id="title" data-section="Header" data-value="Name" data-title="Axel Nava, Desarrollador FullStack"></h1>
+    <h1 id="title"
+        class="ml-8 mt-4 after:animate-blink after:content-['\\_'] after:z-10 md:text-4xl font-bold leading-16"
+        data-section="Header" data-value="Name"
+        data-title="Axel Nava, Desarrollador FullStack"></h1>
     <div id="vim-airline"
          class="text-[2.3cqi] sm:text-lg grid grid-flow-col justify-between bg-latte-surface0 dark:bg-[hsl(from_var(--color-mocha-surface0)_h_s_l_/_0.7)]">
         <div class="left flex ">
             <CellAirlineVim isFirst isLeft
                             className="dark:bg-mocha-green dark:text-[color:hsl(from_var(--color-mocha-text)_h_s_10)] "
-                            elementColor="green">
+                            elementColor="green" id="mode-vim">
                 <span class="icon-vim"></span><span id="mode">Normal</span>
             </CellAirlineVim>
             <CellAirlineVim isLeft className="dark:bg-mocha-overlay1 dark:text-mocha-text" elementColor="gray">
@@ -49,17 +53,21 @@ import ButtonSelectable from "./ButtonSelectable.astro"
                 <span class="icon-vim"> </span><span>Top</span><span>1:1</span>
             </CellAirlineVim>
             <CellAirlineVim isLeft={false} isFirst={false} className="dark:bg-mocha-red dark:text-mocha-surface0"
-                            elementColor="orange">
+                            elementColor="orange" id="time-cell">
                 <span class="icon-vim"></span><span id="time">16:46</span>
             </CellAirlineVim>
         </div>
     </div>
     <div class="vim-command-text">
-        <span data-default-text="vim" id="text-vim"></span>
+        <span data-default-text="vim" class="" id="text-vim"></span>
     </div>
 </header>
 
 <style>
+  h1 {
+    font-family: "Cascadia Code", system-ui;
+  }
+
   .wrapper-vim {
     font-family: "Cascadia Code", system-ui;
     grid-template-rows: 1fr 8rem auto;
@@ -73,3 +81,330 @@ import ButtonSelectable from "./ButtonSelectable.astro"
     border-color: var(--color-mocha-blue);
   }
 </style>
+<script>
+    type GraphWays = {
+        [key: string]: GraphWays | string
+    }
+    let timeElement = document.querySelector<HTMLElement>('#time');
+    let modeCell = document.querySelector<HTMLElement>("#mode-vim");
+    let containerTime = document.querySelector<HTMLElement>("#time-cell");
+    const textVim = document.getElementById('text-vim') as HTMLSpanElement;
+    if (textVim) {
+        textVim.innerText = textVim.dataset.defaultText ?? ''
+    }
+
+    if (timeElement) {
+        timeElement.innerText = new Date().toLocaleTimeString(['es-MX', 'en-US', "es-ES", "es-PE"]
+            , {timeStyle: "short"});
+
+        setInterval(() => {
+            timeElement.innerText = new Date().toLocaleTimeString(['es-MX', 'en-US', "es-ES", "es-PE"]
+                , {timeStyle: "short"});
+        }, 1000 * 60);
+    }
+
+    let title = document.querySelector<HTMLElement>("#title") as HTMLElement;
+    if (title) {
+        let textTitle = title.dataset.title ?? '';
+        let lengthText = textTitle.length;
+        let counter = 0;
+
+        function moveCursor(titleText: string, currentPosition: number) {
+            let char = titleText.charAt(currentPosition);
+            title.innerHTML += char;
+        }
+
+        let interval = setInterval(function () {
+            moveCursor(textTitle, counter);
+            counter++;
+            if (counter >= lengthText) {
+                clearInterval(interval);
+            }
+        }, 100);
+    }
+
+    function setNewTranslation(json: GraphWays, keysTree: string[] = []) {
+        if (keysTree.length === 0) {
+            keysTree.push('');
+        }
+        let keyParent = keysTree.at(keysTree.length - 1);
+        for (let key in json) {
+            if (json.hasOwnProperty(key) && typeof json[key] === 'object') {
+                keysTree.push(key)
+                let newJSon = json[key];
+                setNewTranslation(newJSon, keysTree)
+                keysTree.pop()
+            } else {
+                let selector = `[data-section="${keysTree[1]}"][data-value="${key}"]`;
+                if (keysTree.length >= 3) {
+                    selector = `[data-section="${keysTree[1]}"][data-project="${keysTree[2]}"][data-value="${key}"]`;
+                }
+                let element = document.querySelector<HTMLElement>(selector)
+                if (element) {
+                    if (element.tagName === 'BUTTON') {
+                        let buttons = document.querySelectorAll(`.${element.classList.item(0)}`)
+                        buttons.forEach(button => {
+                            button.innerText = json[key];
+                        })
+                        continue
+                    }
+                    if (!element.parentElement) {
+                        continue;
+                    }
+                    if (element.parentElement.classList.contains('command-prompt')) {
+                        let spans = document.querySelectorAll<HTMLElement>(`.command-prompt`);
+                        spans.forEach(span => {
+                            if (span.firstElementChild) {
+                                span.firstElementChild.innerText = json[key];
+                            }
+                        })
+                        continue
+                    }
+                    if (element.id === 'title') {
+                        element.dataset.title = json[key] as string;
+                    }
+                    if (element.dataset.value === 'TitleDescription') {
+                        let titlesDesc = document.querySelectorAll('.title-desc')
+                        titlesDesc.forEach(title => {
+                            title.innerText = json[key];
+                        })
+                        continue;
+                    }
+                    element.innerHTML = json[key] as string;
+                }
+            }
+        }
+        return keyParent;
+    }
+
+    function downloadCV() {
+        const anchorDownload = document.querySelector("#download-anchor") as HTMLAnchorElement;
+        if (anchorDownload) {
+            anchorDownload.click()
+        }
+        messageCommand = 'CV Descargado';
+    }
+
+    function changeLanguage(language: string) {
+        let body = document.querySelector<HTMLBodyElement>('body') as HTMLBodyElement;
+        let bodyLanguage = body.dataset.language;
+
+        let locales: { [key: string]: string } = {
+            'spanish': 'es',
+            'english': 'en'
+        }
+        if (locales[language] && bodyLanguage === locales[language]) {
+            switch (locales[language]) {
+                case 'es':
+                    messageCommand = 'El idioma es el mismo'
+                    break;
+                case 'en':
+                    messageCommand = 'The language is the same'
+                    break;
+            }
+
+            changeMessageText(messageCommand)
+            return
+        }
+        body.dataset.language = locales[language];
+
+        let localJson = localStorage.getItem(`translation${language}`);
+        if (!localJson) {
+            fetch(`../Languages/${locales[language]}.json`)
+                .then(res => res.json())
+                .then(json => {
+                    setNewTranslation(json)
+                    if (locales[language] === 'es') {
+                        messageCommand = 'El idioma ha sido cambiado con éxito';
+                    } else {
+                        messageCommand = 'Language changed successfully';
+                    }
+                    changeMessageText(messageCommand)
+                })
+                .catch(err => {
+                    console.log(err)
+                    messageCommand = 'Hubo un error al cambiar el idioma';
+                });
+        } else {
+            setNewTranslation(localJson)
+            if (locales[language] === 'es') {
+                messageCommand = 'El idioma ha sido cambiado con éxito';
+            } else {
+                messageCommand = 'Language changed successfully';
+            }
+            changeMessageText(messageCommand)
+        }
+
+        messageCommand = messageCommand === '' ? 'Error al resolver' : messageCommand;
+        return true;
+    }
+
+    const states = {
+        FOCUSED: 1,
+        NOT_FOCUSED: 0,
+    }
+    const header = document.querySelector<HTMLElement>(".head");
+    let stateHeader = states.NOT_FOCUSED
+    if (header) {
+        header.addEventListener("click", function (event) {
+            stateHeader = states.FOCUSED;
+            event.stopPropagation();
+        });
+    }
+    document.addEventListener("click", function () {
+        stateHeader = states.NOT_FOCUSED;
+    })
+
+    const customFunctions: { [key: string]: (...args: any[]) => any } = {
+        'changeLanguage': changeLanguage,
+        'downloadCV': downloadCV,
+    }
+
+    function specialKeys(key: string) {
+        let keys: { [key: string]: boolean } = {
+            'Shift': true,
+            'Up': true,
+            'Down': true,
+            'Left': true,
+            'Right': true,
+            'Tab': true,
+            'Ctrl': true,
+            'Alt': true,
+            'Meta': true,
+            'Super': true,
+            'CapLock': true,
+            'ArrowDown': true,
+            'ArrowLeft': true,
+            'ArrowRight': true,
+            'ArrowUp': true,
+        }
+        return !!keys[key]
+    }
+
+    function changeMessageText(text: string) {
+        textVim.innerText = text === '' ? textVim.dataset.innerText ?? '' : text;
+    }
+
+    function executeCommand(graphWays: GraphWays, sequenceRest: string[]) {
+        for (let key in graphWays) {
+            let valueSequence = sequenceRest[0]
+            let keysObject = graphWays.hasOwnProperty(valueSequence) && typeof (graphWays[key]) !== 'string' ? Object.keys(graphWays[valueSequence]) : key
+
+            if (sequenceRest.length === 1 && keysObject.length > 1 && typeof (keysObject) !== 'string') {
+                return false
+            }
+            if (sequenceRest.length === 1 && typeof (keysObject) === 'string' && key === sequenceRest[0]) {
+                let valueFunction: string = graphWays[key] as string ?? '';
+                let fn = customFunctions[valueFunction];
+                fn(sequenceRest[0])
+
+                return true;
+            }
+            if (key === valueSequence) {
+                sequenceRest.shift()
+                return executeCommand(graphWays[key] as GraphWays, sequenceRest)
+            }
+        }
+        return false
+    }
+
+    function validateAndExecuteCommand(sequence: string[]) {
+        let ways = {
+            'set': {
+                'language': {
+                    'spanish': "changeLanguage",
+                    'english': "changeLanguage",
+                },
+                'dark': {
+                    'mode': "setDarkMode"
+                },
+
+                'light': {
+                    'mode': "setLightMode"
+                }
+            },
+            'download': {
+                'cv': 'downloadCV',
+            }
+        }
+        return executeCommand(ways, sequence)
+    }
+
+    let modeElement = document.getElementById('mode') as HTMLElement;
+
+    function setCommandMode(elements: HTMLElement[]) {
+        modeElement.innerText = 'Command';
+        elements.forEach(element => {
+            if (element) {
+                element.classList.add("command-mode")
+            }
+        })
+    }
+
+    function disableCommandMode(elements: HTMLElement[]) {
+        modeElement.innerText = 'Normal';
+        elements.forEach(element => {
+            if (element) {
+                element.classList.remove("command-mode")
+            }
+        })
+    }
+
+    function deleteKeys(key: string) {
+        let keys: { [key: string]: boolean } = {
+            'Backspace': true,
+            'Delete': true,
+            'Del': true
+        }
+        return !!keys[key];
+    }
+
+    let messageCommand = ''
+    document.addEventListener("keydown", function (event) {
+            let regText = /aA-zZ/
+            if (stateHeader === states.FOCUSED) {
+                let key = event.key
+                if (specialKeys(key)) {
+                    return
+                }
+
+                if (key === ':') {
+                    textVim.contentEditable = 'true';
+                    textVim.innerText = ''
+                    textVim.focus();
+                    if (modeCell && containerTime) {
+                        setCommandMode([modeCell, containerTime])
+                    }
+                    return;
+                }
+                if (key === 'Enter') {
+                    let command = textVim.innerText.split(':')[1]
+                    let sequence = command.split(' ');
+                    validateAndExecuteCommand(sequence)
+
+                    if (modeCell && containerTime) {
+                        disableCommandMode([modeCell, containerTime])
+                    }
+                    textVim.blur()
+                    event.preventDefault()
+                    return
+                }
+                if (key === 'esc' || key === 'Escape' || key === 'Esc' || key === 'Scape') {
+                    textVim.contentEditable = 'false';
+                    textVim.innerText = textVim.dataset.defaultText ?? ''
+
+                    if (modeCell && containerTime) {
+                        disableCommandMode([modeCell, containerTime])
+                    }
+                    return;
+                }
+                if (deleteKeys(key)) {
+                    return
+                }
+                if (textVim.contentEditable === 'true' && regText.test(key)) {
+                    textVim.textContent += key;
+                }
+            }
+        }
+    )
+</script>
