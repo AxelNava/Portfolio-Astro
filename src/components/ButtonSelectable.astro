@@ -2,21 +2,23 @@
 interface Props {
     className?: string,
     id?: string,
-    isAnchor?: boolean,
     hasAnimation?: boolean,
     isForCard?: boolean,
 }
-const {className, id, isAnchor, hasAnimation, isForCard} = Astro.props;
+const {
+    className, id, hasAnimation,
+    isForCard, ...rest
+} = Astro.props;
 let animationClases = hasAnimation ? "transition-colors" : "";
 let clasesCard = isForCard ? "" : "";
 ---
 <button class:list={[
     className,
     animationClases,
-    clasesCard
+    clasesCard,
+    "border-2 border-transparent [justify-self:end] [align-self:end] rounded-xs hover:cursor-pointer button-link"
 ]}
-        class="border-2 border-transparent [justify-self:end] [align-self:end] rounded-xs hover:cursor-pointer button-link"
-        type="button" id=`${id}`>
+        type="button" id=`${id}` {...rest}>
     <slot/>
 </button>
 

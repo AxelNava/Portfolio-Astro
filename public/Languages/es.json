@@ -1,0 +1,79 @@
+{
+  "Header": {
+    "Title": "Portafolio",
+    "HelpText": "Presiona <samp><kbd>:</kbd></samp> para entrar al modo comando",
+    "CommandsAvailable": "Los comandos disponibles son",
+    "ButtonHelp": "O presiona los botones de arriba para ejecutar el comando",
+    "Name": "Axel Nava, Desarrollador FullStack"
+  },
+  "Personal": {
+    "Experience": "Experiencia",
+    "ExperienceP": "Trabajé como freelance por casí 2 años en <i>Comercializate</i> y <i>RCPerformanceDiesel</i>"
+  },
+  "AboutMe": {
+    "AboutMeTitle": "Acerca de mí",
+    "First": "Ingeniero en Videojuegos con experiencia en desarrollo web como FullStack y desarrollo de un compilador",
+    "Second": "Me gusta el tema de compiladores, el desarrollo web, tocar el piano y probar nuevas cosas"
+  },
+  "Knowledge": {
+    "Title": "Conocimientos",
+    "TitleProgramming": "Lenguajes de programación",
+    "Web": "Desarrollo Web",
+    "DataBase": "Base de datos",
+    "Technologies": "Tecnologías",
+    "Learning": "Aprendiendo"
+  },
+  "Languages": {
+    "Title": "Idiomas",
+    "Es": "Español",
+    "En": "Inglés"
+  },
+  "SocialMedia": {
+    "Title": "Redes sociales"
+  },
+  "Projects": {
+    "Compiler": {
+      "Title": "Compilador",
+      "Resume": "Un compilador para un pequeño conjunto de instrucciones de C# escrito en C#, la última fase de desarrollo fue el código intermedio",
+      "ButtonMore": "Da click para mostrar más >>",
+      "CommandValue": "Mostrando proyecto...",
+      "TitleDescription": "Características principales",
+      "List1": "Implementación de analizador léxico propio",
+      "List2": "Uso del algoritmo LR(1) para el analizador sintáctico",
+      "List3": "Implementación propia del analizador semántico",
+      "List4": "Generación de implementación propia del código intermedio usando código de 3 direcciones",
+      "Description1": "Este compilador puede generar el código intermedio dado el código fuente, devuelve los errores y evalúa operaciones matemáticas que puedan ser evaluadas usando notación prefija. si el código fuente dado es valido, el programa crea un archivo de texto con el código intermedio",
+      "ButtonClose": "Cerrar"
+    },
+    "Desktop": {
+      "Title": "Aplicación de escritorio",
+      "Resume": "Administración de usuarios para generar recibos de agua en PDF, manejo de usuarios con deudas automatizadas usando SQLite como base de datos",
+      "List1": "Administración de usuarios",
+      "List2": "Subida de archivos Excel y csv",
+      "List3": "Incremento mensual de deuda de usuarios",
+      "List4": "Generación de recibos en PDF",
+      "Description1": "Esta aplicación fue hecha como una propuesta para administrar los usuario del servicio de agua, permite la carga de archivos Excel propios y CSV, genera el PDF con todos los recibos o solo un rango de usuarios e incremente mensualmente la deuda de cada uno de estos cuando la aplicación es abierta"
+    },
+    "Web": {
+      "Title": "Desarrollo Web",
+      "Resume1": "Un panel de administración para que los usuarios manejen sus propios datos, con la capacidad de que un administrador pueda manejar estos datos",
+      "Resume2": "Este tipo de panel es replicado en la aplicación de la web de RCPerformance, las capacidad de este son similares",
+      "List1": "~Diseño responsive",
+      "List2": "Administración de usuarios",
+      "List3": "Manejo de datos de usuario por ellos mismo",
+      "List4": "Diseño responsivo",
+      "List5": "Sistema de permisos de usuario por roles",
+      "List6": "Generación de PDF's y Excel's",
+      "List7": "Operaciones con multiples base de datos",
+      "List8": "Edición manual de datos y administración básica de inventario",
+      "Description": "En base a este panel(estilo) trabajé para RCPerformance, las características de este proyecto son"
+    },
+    "VideoGames": {
+      "Title": "Pianista en Escritorio",
+      "Resume": "Pequeña adaptación del videojuego mobil \"Pianista\" para escritorio, este juego es un intento de replicar las mecánicas usando archivos MIDI",
+      "List1": "Uso de archivos MIDI",
+      "List2": "Jugabilidad con el teclado",
+      "Description": "Este juego fue desarrollado con Unity, usando archivos MIDI creados de mi propia cuenta, y permitiendo la captura de multiples teclas presionadas al mismo tiempo"
+    }
+  }
+}

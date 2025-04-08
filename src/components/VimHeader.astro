@@ -2,7 +2,7 @@
 import CellAirlineVim from "./CellAirlineVim.astro"
 import ButtonSelectable from "./ButtonSelectable.astro"
 ---
-<header class="wrapper-vim bg-latte-base dark:bg-mocha-base grid mt-8" id="vim">
+<header class="head wrapper-vim bg-latte-base dark:bg-mocha-base grid mt-8" id="vim">
     <div id="help"
          class="text-latte-text text-xs sm:text-base dark:text-mocha-text dark:opacity-50
          grid justify-center items-center pt-6 px-8 gap-4"
@@ -210,7 +210,7 @@ import ButtonSelectable from "./ButtonSelectable.astro"
 
         let localJson = localStorage.getItem(`translation${language}`);
         if (!localJson) {
-            fetch(`../Languages/${locales[language]}.json`)
+            fetch(`/Languages/${locales[language]}.json`)
                 .then(res => res.json())
                 .then(json => {
                     setNewTranslation(json)
@@ -226,7 +226,8 @@ import ButtonSelectable from "./ButtonSelectable.astro"
                     messageCommand = 'Hubo un error al cambiar el idioma';
                 });
         } else {
-            setNewTranslation(localJson)
+            let correctJson = JSON.parse(localJson) as GraphWays;
+            setNewTranslation(correctJson)
             if (locales[language] === 'es') {
                 messageCommand = 'El idioma ha sido cambiado con éxito';
             } else {
@@ -370,7 +371,7 @@ import ButtonSelectable from "./ButtonSelectable.astro"
 
                 if (key === ':') {
                     textVim.contentEditable = 'true';
-                    textVim.innerText = ''
+                    textVim.textContent = ''
                     textVim.focus();
                     if (modeCell && containerTime) {
                         setCommandMode([modeCell, containerTime])

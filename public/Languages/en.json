@@ -1,0 +1,79 @@
+{
+  "Header": {
+    "Title": "Portfolio",
+    "HelpText": "Press <samp><kbd>:</kbd></samp> for enter to command mode",
+    "CommandsAvailable": "Los comandos disponibles son",
+    "ButtonHelp": "Or press the buttons above to execute the command",
+    "Name": "Axel Nava, FullStack Developer"
+  },
+  "Personal": {
+    "Experience": "Experience",
+    "ExperienceP": "Working as freelance for almost 2 years at <i>Comercializate</i> and <i>RCPerformanceDiesel</i>"
+  },
+  "AboutMe": {
+    "AboutMeTitle": "About me",
+    "First": "VideoGame engineering with experience with web development as FullStack developer and developing a compiler.",
+    "Second": "I like the compiler stuff, web development, playing piano and try new things."
+  },
+  "Knowledge": {
+    "Title": "Knowledge",
+    "TitleProgramming": "Programming language",
+    "Web": "Web",
+    "DataBase": "Database",
+    "Technologies": "Technologies",
+    "Learning": "Learning"
+  },
+  "Languages": {
+    "Title": "Speaking language skills",
+    "Es": "Spanish",
+    "En": "English"
+  },
+  "SocialMedia": {
+    "Title": "Social Media"
+  },
+  "Projects": {
+    "Compiler": {
+      "Title": "Compiler",
+      "Resume": "A compiler for a small subset of C# written in C#, the last develop fase was Intermediate Language.",
+      "ButtonMore": "Click to show more >>",
+      "CommandValue": "Showing project...",
+      "TitleDescription": "Main features",
+      "List1": "Own lexer implementation",
+      "List2": "LR(1) algorithm for syntax analyzer",
+      "List3": "Own semantic analyzer implementation",
+      "List4": "Generation of own intermediate code implementation using 3 addresses code",
+      "Description1": "This compiler can generate intermediate code from the source code given, retries errors and evaluate math operations that can be evaluated using pre-fix annotation. If the source code given is valid, the program output the intermediate code in a text file.",
+      "ButtonClose": "Close"
+    },
+    "Desktop": {
+      "Title": "Desktop application",
+      "Resume": "User administrator for generate Water Receives in PDF files, manage users with automation of debts in database SQLite.",
+      "List1": "User administration",
+      "List2": "Upload info from Excel and csv",
+      "List3": "Monthly auto incremente debt from users",
+      "List4": "PDF generation of tickets",
+      "Description1": "This app was build as a proposal to the users administrators of water service, it allows to load a custom Excel and csv, print all or a range of users tickets and monthly increment of debt from each user one the app is open."
+    },
+    "Web": {
+      "Title": "Web development",
+      "Resume1": "A dashboard to manage the own user data, with capability of manage user data as administrator user.",
+      "Resume2": "This kind of dashboard is replicate in RCPerformance web app, the capabilities are quite similar.",
+      "List1": "~Responsive design",
+      "List2": "User administration",
+      "List3": "Manejo de datos de usuario por ellos mismo",
+      "List4": "Responsive design",
+      "List5": "User permission role system",
+      "List6": "PDF and Excel generation",
+      "List7": "Multi database operations",
+      "List8": "Edit data manually and basic inventory management",
+      "Description": "Base in this dashboard (style) I worked for RCPerformance, the features of this project are."
+    },
+    "VideoGames": {
+      "Title": "Pianista Desktop",
+      "Resume": "Small port from \"Pianista\" mobile game to desktop, this game try to replicate the playing of the game using MIDI files.",
+      "List1": "Use of midi files",
+      "List2": "Playing with keyboard mechanic",
+      "Description": "This game was developed with Unity, using midi files created by own, and allowing the capture of multiple keys pressed at once."
+    }
+  }
+}

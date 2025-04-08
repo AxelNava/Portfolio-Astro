@@ -40,15 +40,20 @@ const {hasDialog, className, classNameArticle} = Astro.props;
     </article>
     {
         hasDialog ?
-                <ButtonSelectable hasAnimation className="p-4 button-card opacity-80 mt-auto button-dialog">Da click
+                <ButtonSelectable hasAnimation
+                                  className="button-show-more p-4 button-card opacity-80 mt-auto button-dialog"
+                                  data-section="Projects" data-project="Compiler" data-value="ButtonMore">Da click
                     para mostrar más >>
                 </ButtonSelectable>
                 <dialog class="dialog-element text-latte-text dark:text-mocha-text w-[90dvw]
                  h-[80dvh] inset-[5%] backdrop:backdrop-blur-xs border-4 border-gray-900 dark:border-gray-300">
                     <div class="grid lg:grid-cols-[1fr_50ch] gap-4 p-4">
                         <form class="lg:col-span-2 flex justify-between" method="dialog">
-                            <span class="command-prompt after:animate-blink  text-latte-green dark:text-mocha-green">Mostrando proyecto...</span>
-                            <button class="cursor-pointer border-2 p-2 border-mocha-text">Cerrar</button>
+                            <span data-section="Projects" data-project="Compiler" data-value="CommandValue"
+                                  class="command-prompt after:animate-blink  text-latte-green dark:text-mocha-green">Mostrando proyecto...</span>
+                            <button data-section="Projects" data-project="Compiler" data-value="ButtonClose"
+                                    class="button-close-dialog cursor-pointer border-2 p-2 border-mocha-text">Cerrar
+                            </button>
                         </form>
                         <slot name="dialog-element"></slot>
                     </div>
