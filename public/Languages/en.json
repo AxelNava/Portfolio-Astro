@@ -2,7 +2,7 @@
   "Header": {
     "Title": "Portfolio",
     "HelpText": "Press <samp><kbd>:</kbd></samp> for enter to command mode",
-    "CommandsAvailable": "Los comandos disponibles son",
+    "CommandsAvailable": "The commands available are",
     "ButtonHelp": "Or press the buttons above to execute the command",
     "Name": "Axel Nava, FullStack Developer"
   },

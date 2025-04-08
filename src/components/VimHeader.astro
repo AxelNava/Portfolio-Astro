@@ -89,6 +89,18 @@ import ButtonSelectable from "./ButtonSelectable.astro"
     let modeCell = document.querySelector<HTMLElement>("#mode-vim");
     let containerTime = document.querySelector<HTMLElement>("#time-cell");
     const textVim = document.getElementById('text-vim') as HTMLSpanElement;
+    const buttonSpanish = document.querySelector<HTMLElement>("#set-language-spanish");
+    const buttonEnglish = document.querySelector<HTMLElement>("#set-language-english");
+    if (buttonEnglish) {
+        buttonEnglish.addEventListener('click', () => {
+            changeLanguage('english');
+        })
+    }
+    if (buttonSpanish) {
+        buttonSpanish.addEventListener('click', () => {
+            changeLanguage('spanish');
+        })
+    }
     if (textVim) {
         textVim.innerText = textVim.dataset.defaultText ?? ''
     }

@@ -17,7 +17,7 @@ import Projects from "../components/Projects.astro";
                 class="dark:bg-mocha-base dark:border-mocha-overlay1 dark:text-mocha-subtext0
                 px-3 backdrop-blur-sm border-2 sm:col-start-1 sm:col-span-2"
         >
-            <Image src={photo} alt="me" class="max-w-40 m-auto py-8"></Image>
+            <Image src={photo} alt="me" class="max-w-40 m-auto py-8" loading="eager"></Image>
         </section>
         <CardInfo hasDialog={false} className="md:col-span-5 lg:col-span-3">
             <span slot="title-card" class="git-branch" data-section="Personal"
