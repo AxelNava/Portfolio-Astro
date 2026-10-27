@@ -29,6 +29,7 @@ async (page) => {
     await viewer.waitFor({ state: 'visible', timeout: 2000 });
     check(page.url() === url, 'image click must not leave the portfolio');
     await page.waitForFunction(() => { const image = document.querySelector('[data-viewer-image]'); return image.complete && image.naturalWidth > 0; });
+    await page.locator('[data-viewer-image]').waitFor({ state: 'visible' });
     check(await page.locator('[data-viewer-tab]').isVisible(), 'viewer must appear as a workspace tab');
     check(await page.locator('[data-viewer-counter]').textContent() === '1 / 6', 'web gallery must include preview and five evidence images');
     const initial = await page.locator('[data-viewer-image]').boundingBox();

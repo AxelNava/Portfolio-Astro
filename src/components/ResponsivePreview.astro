@@ -1,0 +1,20 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  src: ImageMetadata;
+  alt: string;
+  altEs: string;
+  altEn: string;
+  evidence?: boolean;
+}
+
+const { src, alt, altEs, altEn, evidence = false } = Astro.props;
+const widths = [...new Set([320, 480, 640, 960, 1280, src.width].filter(width => width <= src.width))];
+const sizes = evidence
+  ? '(max-width: 700px) calc(100vw - 4rem), (max-width: 900px) calc(50vw - 3rem), (max-width: 1488px) calc(33.33vw - 3.5rem), 420px'
+  : '(max-width: 700px) calc(100vw - 4rem), (max-width: 900px) calc(100vw - 6rem), (max-width: 1488px) calc(66.67vw - 7rem), 850px';
+---
+
+<Image src={src} width={src.width} widths={widths} sizes={sizes} format="webp" quality={75} alt={alt} data-alt-es={altEs} data-alt-en={altEn} />

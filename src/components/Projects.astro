@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets';
+import ResponsivePreview from './ResponsivePreview.astro';
 import Copy from './Copy.astro';
 import principalCompilador from '../assets/img/Projects/Compilador/Captura de pantalla_20230220_131721.webp';
 import compilador1 from '../assets/img/Projects/Compilador/Captura de pantalla 2025-03-21 110645.webp';
@@ -77,7 +77,7 @@ const compilerEvidence = [compilador1, compilador2, compilador4, compilador5];
       <p><Copy es="En RC Performance trabajé con el mismo diseño de panel, pero con diferentes reglas de negocio: diseño responsivo, permisos por roles, generación de PDF y Excel, operaciones con múltiples bases de datos, edición manual de datos y administración básica de inventario. Las imágenes mostradas son de Comercializate, no de RCPerformance." en="At RC Performance I worked with the same panel layout, but with different business rules: responsive design, role-based permissions, PDF and Excel generation, operations across multiple databases, manual data editing and basic inventory management. The images shown are from Comercializate, not RCPerformance." /></p>
       <div class="project-preview">
         <a href={principalWeb.src}>
-          <Image src={principalWeb} width={principalWeb.width} alt="Vista principal del panel de Comercializate" data-alt-es="Vista principal del panel de Comercializate" data-alt-en="Main view of the Comercializate panel" />
+          <ResponsivePreview src={principalWeb} alt="Vista principal del panel de Comercializate" altEs="Vista principal del panel de Comercializate" altEn="Main view of the Comercializate panel" />
         </a>
       </div>
       <details class="evidence">
@@ -85,7 +85,7 @@ const compilerEvidence = [compilador1, compilador2, compilador4, compilador5];
         <div class="evidence-grid">
           {webEvidence.map((image, index) => (
             <a href={image.src}>
-              <Image src={image} width={image.width} alt={`Captura ${index + 1} del panel de Comercializate`} data-alt-es={`Captura ${index + 1} del panel de Comercializate`} data-alt-en={`Comercializate panel screenshot ${index + 1}`} />
+              <ResponsivePreview src={image} alt={`Captura ${index + 1} del panel de Comercializate`} altEs={`Captura ${index + 1} del panel de Comercializate`} altEn={`Comercializate panel screenshot ${index + 1}`} evidence />
             </a>
           ))}
         </div>
@@ -102,7 +102,7 @@ const compilerEvidence = [compilador1, compilador2, compilador4, compilador5];
       </ul>
       <div class="project-preview">
         <a href={principalDesktop.src}>
-          <Image src={principalDesktop} width={principalDesktop.width} alt="Vista de impresión de recibos de agua" data-alt-es="Vista de impresión de recibos de agua" data-alt-en="Water receipt printing view" />
+          <ResponsivePreview src={principalDesktop} alt="Vista de impresión de recibos de agua" altEs="Vista de impresión de recibos de agua" altEn="Water receipt printing view" />
         </a>
       </div>
       <details class="evidence">
@@ -110,7 +110,7 @@ const compilerEvidence = [compilador1, compilador2, compilador4, compilador5];
         <div class="evidence-grid">
           {desktopEvidence.map((image) => (
             <a href={image.src.src}>
-              <Image src={image.src} width={image.src.width} alt={image.es} data-alt-es={image.es} data-alt-en={image.en} />
+              <ResponsivePreview src={image.src} alt={image.es} altEs={image.es} altEn={image.en} evidence />
             </a>
           ))}
         </div>
@@ -128,7 +128,7 @@ const compilerEvidence = [compilador1, compilador2, compilador4, compilador5];
       <p><Copy es="A partir del código fuente, muestra errores y evalúa operaciones matemáticas que pueden expresarse en notación prefija. Si el código es válido, crea un archivo de texto con el código intermedio." en="Given source code, it reports errors and evaluates mathematical operations that can be expressed in prefix notation. If the code is valid, it creates a text file with the intermediate code." /></p>
       <div class="project-preview">
         <a href={principalCompilador.src}>
-          <Image src={principalCompilador} width={principalCompilador.width} alt="Vista principal del compilador" data-alt-es="Vista principal del compilador" data-alt-en="Main view of the compiler" />
+          <ResponsivePreview src={principalCompilador} alt="Vista principal del compilador" altEs="Vista principal del compilador" altEn="Main view of the compiler" />
         </a>
       </div>
       <details class="evidence">
@@ -136,7 +136,7 @@ const compilerEvidence = [compilador1, compilador2, compilador4, compilador5];
         <div class="evidence-grid">
           {compilerEvidence.map((image, index) => (
             <a href={image.src}>
-              <Image src={image} width={image.width} alt={`Captura ${index + 1} del compilador`} data-alt-es={`Captura ${index + 1} del compilador`} data-alt-en={`Compiler screenshot ${index + 1}`} />
+              <ResponsivePreview src={image} alt={`Captura ${index + 1} del compilador`} altEs={`Captura ${index + 1} del compilador`} altEn={`Compiler screenshot ${index + 1}`} evidence />
             </a>
           ))}
         </div>
@@ -152,7 +152,7 @@ const compilerEvidence = [compilador1, compilador2, compilador4, compilador5];
       </ul>
       <div class="project-preview">
         <a href={principalVideogame.src}>
-          <Image src={principalVideogame} width={principalVideogame.width} alt="Vista del juego de piano para escritorio" data-alt-es="Vista del juego de piano para escritorio" data-alt-en="Desktop piano game view" />
+          <ResponsivePreview src={principalVideogame} alt="Vista del juego de piano para escritorio" altEs="Vista del juego de piano para escritorio" altEn="Desktop piano game view" />
         </a>
       </div>
         </div>

@@ -54,6 +54,7 @@ export function initImageViewer(root = document) {
   let ready = false;
   let opener;
   let drag;
+  let displayRevision = 0;
 
   function layout() {
     if (!ready) return;
@@ -82,6 +83,7 @@ export function initImageViewer(root = document) {
   }
 
   function showImage() {
+    displayRevision += 1;
     const source = gallery[index].querySelector('img');
     ready = false;
     image.hidden = true;
@@ -137,12 +139,15 @@ export function initImageViewer(root = document) {
     loading.querySelector('[data-image-loaded]').hidden = false;
     loading.querySelector('[data-image-count]').textContent = '1 / 1';
     setLoaderProgress(loading, 'image', 'loaded');
+    const revision = displayRevision;
     setTimeout(() => {
-      if (image === loaded && ready) loading.hidden = true;
+      if (revision !== displayRevision || image !== loaded || !ready) return;
+      loading.hidden = true;
+      image.hidden = false;
+      canvas.setAttribute('aria-busy', 'false');
+      layout();
     }, 500);
     error.hidden = true;
-    image.hidden = false;
-    canvas.setAttribute('aria-busy', 'false');
     zoomTo(1);
   }
   function imageFailed(failed) {
