@@ -1,48 +1,63 @@
-# Astro Starter Kit: Basics
+# Axel Nava — Portfolio
+
+An Astro portfolio with a console-inspired Catppuccin workspace. The landing presents professional experience first, selected projects with real screenshot evidence second, and contact links last.
+
+## Run locally
+
+Requires Node.js 22.23.4 or newer and pnpm.
 
 ```sh
-pnpm create astro@latest -- --template basics
+pnpm install
+pnpm dev
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+Open `http://localhost:4321`. For the production version:
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
+```sh
+pnpm build
+pnpm preview
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## Loading
 
-## 🧞 Commands
+The startup indicator counts three completed essentials: the stylesheet, the document, and workspace initialization. It transitions automatically; project images do not block it. The count measures completed items, not downloaded bytes. The viewer shows a bracketed square indicator while an image loads and retains its retry control on failure. Without JavaScript the page content remains available.
 
-All commands are run from the root of the project, from a terminal:
+## Controls
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
+- Use the visible tabs to switch between experience, projects and contact in one Vim-style window. On desktop (over 900px wide and 600px high), the frame stays within the viewport and content scrolls inside it. Smaller windows use natural page scrolling.
+- In Projects, the selected title and summary appear above the selector on the left; the detailed content fills the right pane. At 900px and below, these areas stack in the same reading order.
+- Use Left/Right arrows for section tabs and the compact project grid, Up/Down for the desktop project list, and Home/End in either group. Tab moves onward to content. Mouse and keyboard selections update the direct link; without JavaScript all content remains visible.
+- Choose **Español** or **English** to translate the page, image descriptions and document language. Spanish is the initial language; selection is not persisted.
+- Open a project's screenshot disclosure with a click or the keyboard. Select any screenshot to open the viewer in a workspace tab beside the portfolio tab. Switch back and forth without losing the selected project or screenshot. Previous/Next (or Left/Right) navigate only that project's images; numbered and square indicators show the current position.
+- In the viewer, use **Zoom in / Zoom out**, **Fit**, or **+ / − / 0**. Zoom ranges from fit (100%) to 400%; drag or scroll the enlarged image to inspect details. Close with **Close** or **Escape** to return focus to the original image. Visited images are retained in memory while the page remains open. Failed images expose **Retry**. Modified clicks and no-JavaScript browsing retain the original image links.
+- **Explore related projects** in Freelance selects Comercializate directly. Its project tab displays \`[work: freelance]\`; the summary records its relationship with RC Performance: the same panel layout with different business rules. Other projects are not marked as professional work.
+- Light/dark appearance follows the system preference. Reduced-motion preference disables smooth anchor scrolling.
+- No terminal command knowledge is required. The landing does not expose the old command parser, portrait or CV download.
 
-## 👀 Want to learn more?
+## Verification
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+```sh
+node --test tests/*.test.mjs
+pnpm build
+```
+
+The Node tests cover translation of repeated copy, image descriptions, document language, selected-control state, restoration of Spanish, rejection of unsupported languages without mutation, tab/panel accessibility state, keyboard selection, and synchronized project summaries. UI verification additionally requires a real browser: check ES/EN, both system themes, keyboard focus/disclosures, screenshot loading, and horizontal overflow at mobile and desktop widths. \`tests/image-viewer.browser.js\` is a Playwright tool snippet (not a Node test): load it through the browser run-code tool against production preview on port 4323. It checks related navigation/attribution, in-page zoom/pan/focus return, gallery boundaries and isolation. Also check mobile, focus containment, image error/retry, and no-JavaScript fallback.
+
+## Implementation map
+
+| File | Responsibility |
+| --- | --- |
+| `src/pages/index.astro` | Compact identity, chronological experience, navigation and contact |
+| `src/components/Projects.astro` | Project index/details and native screenshot disclosures |
+| `src/components/Copy.astro` | Escaped bilingual text; no translated HTML injection |
+| `src/components/ImageViewer.astro` | Shared workspace image viewer and bilingual controls |
+| `src/scripts/image-viewer.mjs` | Per-project galleries, bounded zoom, drag/pan and load/error states |
+| `src/styles/image-viewer.css` | Responsive terminal-style viewer and work indicator |
+| `src/scripts/locale.mjs` | Language switching without global keyboard interception |
+| `src/scripts/tabs.mjs` | Progressive tab enhancement, project selection and direct links |
+| `src/styles/workspace.css` | Landing layout and semantic Catppuccin theme roles |
+| `src/styles/global.css` | Existing palette and self-hosted fonts |
+
+Existing project images under `src/assets/img/Projects/` are owner-supplied repository assets, not generated artwork. Comercializate screenshots are not evidence of RCPerformance's private implementation. Unilink's reported time/RAM improvements apply only to the described reporting process.
+
+`DESIGN.md` records the earlier extracted console system and is preserved as historical context; the current workspace implementation is described above. Legacy components and `public/Languages/` dictionaries remain on disk but are not imported by the new landing.

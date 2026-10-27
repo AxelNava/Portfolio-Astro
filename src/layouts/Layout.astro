@@ -1,36 +1,89 @@
 ---
-import '../styles/global.css'
+import '../styles/global.css';
+import '../styles/workspace.css';
 ---
 
 <!doctype html>
-<html lang="es">
-<head>
-    <title>Portfolio</title>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
-    <meta name="generator" content={Astro.generator}/>
-</head>
-<body>
-<slot/>
-</body>
+<html lang="es" data-language="es">
+  <head>
+    <meta charset="UTF-8" />
+    <style is:inline>
+      html { color-scheme: light dark; }
+      html[data-boot='loading'] .startup-loader:not([hidden]) { display: grid; position: fixed; inset: 0; z-index: 100; place-items: center; padding: 1.5rem; background: light-dark(#dce0e8, #11111b); color: light-dark(#4c4f69, #cdd6f4); font: 15px/1.75 monospace; }
+      .startup-terminal { box-sizing: border-box; width: min(100%, 32rem); padding: 1.5rem; border: 1px solid light-dark(#bcc0cc, #45475a); background: light-dark(#eff1f5, #1e1e2e); }
+      .startup-terminal p { margin: 0; }
+      .startup-path { margin-bottom: 1.5rem !important; }
+      .startup-path, .startup-copy { color: light-dark(#5c5f77, #a6adc8); font-size: 0.8rem; }
+      .terminal-progress { display: flex; align-items: center; gap: 0.35rem; margin: 0.75rem 0; }
+      .terminal-progress [data-loader-square] { width: 0.7rem; height: 0.7rem; border: 1px solid light-dark(#5c5f77, #a6adc8); }
+      .terminal-progress [data-loader-square].is-filled { background: light-dark(#40a02b, #a6e3a1); border-color: light-dark(#40a02b, #a6e3a1); }
+    </style>
+    <script is:inline>
+      document.documentElement.setAttribute('data-boot', 'loading');
+      const startupDone = new Set();
+      const loadedStyles = new WeakSet();
+      let startupFinishing = false;
+      function startupRender() {
+        const loader = document.querySelector('[data-startup-loader]');
+        if (!loader) return;
+        loader.querySelectorAll('[data-loader-square]').forEach((square, index) => square.classList.toggle('is-filled', index < startupDone.size));
+        loader.querySelector('[data-startup-count]').textContent = `${startupDone.size} / 3`;
+        if (startupDone.size === 3 && !startupFinishing) {
+          startupFinishing = true;
+          loader.querySelector('[data-startup-status]').textContent = '$ portfolio --ready';
+          loader.querySelector('[data-startup-label]').textContent = 'Recursos esenciales listos:';
+          setTimeout(startupRelease, 500);
+        }
+      }
+      function startupRelease() {
+        document.documentElement.removeAttribute('data-boot');
+        const content = document.getElementById('portfolio-content');
+        if (content) content.inert = false;
+        const loader = document.querySelector('[data-startup-loader]');
+        if (loader) loader.hidden = true;
+      }
+      function startupMark(name) { startupDone.add(name); startupRender(); }
+      function checkStyles() {
+        const styles = [...document.querySelectorAll('link[rel="stylesheet"]')];
+        if ((styles.length && styles.every(style => loadedStyles.has(style))) || (!styles.length && document.querySelector('style'))) startupMark('styles');
+      }
+      document.addEventListener('load', event => {
+        if (event.target.matches?.('link[rel="stylesheet"]')) {
+          loadedStyles.add(event.target);
+          checkStyles();
+        }
+      }, true);
+      document.addEventListener('DOMContentLoaded', () => { checkStyles(); startupMark('document'); });
+      document.addEventListener('portfolio:ready', () => startupMark('workspace'));
+      const bootObserver = new MutationObserver(() => {
+        const loader = document.querySelector('[data-startup-loader]');
+        const content = document.getElementById('portfolio-content');
+        const active = document.documentElement.hasAttribute('data-boot');
+        if (loader) loader.hidden = !active;
+        if (content) content.inert = active;
+        if (loader && content) { startupRender(); bootObserver.disconnect(); }
+      });
+      bootObserver.observe(document.documentElement, { childList: true, subtree: true });
+      setTimeout(startupRelease, 15000);
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Axel Nava — FullStack Developer</title>
+    <meta name="description" content="Axel Nava: desarrollo FullStack, experiencia profesional y proyectos de software para web, escritorio y herramientas. FullStack development, professional experience and software projects." />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+  </head>
+  <body>
+    <div class="startup-loader" data-startup-loader role="status" aria-live="polite" hidden>
+      <div class="startup-terminal">
+        <p class="startup-path">axel-nava / portfolio</p>
+        <p data-startup-status>$ portfolio --loading</p>
+        <div class="terminal-progress" aria-hidden="true"><span>[</span><span data-loader-square></span><span data-loader-square></span><span data-loader-square></span><span>]</span></div>
+        <p class="startup-copy"><span data-startup-label>Recursos esenciales:</span> <span data-startup-count>0 / 3</span></p>
+      </div>
+    </div>
+    <div id="portfolio-content">
+      <slot />
+    </div>
+
+  </body>
 </html>
-
-<style is:global>
-  html,
-  body {
-    margin: 0;
-    width: 100%;
-    height: 100%;
-    color-scheme: dark light;
-    background-color: light-dark(var(--background-color-light),var(--background-color));
-    padding-inline: 0.5rem;
-  }
-
-  @media (max-width: 35em) {
-    html,
-    body {
-      padding-inline: 0.2rem;
-    }
-  }
-</style>

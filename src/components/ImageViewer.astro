@@ -1,0 +1,52 @@
+---
+import Copy from './Copy.astro';
+import '../styles/image-viewer.css';
+---
+
+<section id="image-viewer" class="image-viewer" aria-labelledby="viewer-title" aria-describedby="viewer-help" hidden>
+  <header class="viewer-header">
+    <div class="viewer-heading">
+      <h2 id="viewer-title"><Copy es="Capturas del proyecto" en="Project screenshots" /></h2>
+      <p data-viewer-project></p>
+    </div>
+    <button type="button" data-viewer-close autofocus><Copy es="Cerrar" en="Close" /> <kbd>Esc</kbd></button>
+  </header>
+  <div class="viewer-toolbar">
+    <div class="viewer-controls" role="group" aria-label="Images / Imágenes">
+      <button type="button" data-viewer-prev><Copy es="Anterior" en="Previous" /></button>
+      <output data-viewer-counter aria-live="polite" aria-atomic="true"></output>
+      <span class="viewer-squares" data-viewer-squares aria-hidden="true"></span>
+      <button type="button" data-viewer-next><Copy es="Siguiente" en="Next" /></button>
+    </div>
+    <div class="viewer-controls" role="group" aria-label="Zoom">
+      <button type="button" data-viewer-zoom-out><Copy es="Alejar" en="Zoom out" /></button>
+      <output data-viewer-zoom aria-live="polite">100%</output>
+      <button type="button" data-viewer-zoom-in><Copy es="Acercar" en="Zoom in" /></button>
+      <button type="button" data-viewer-fit><Copy es="Ajustar" en="Fit" /></button>
+    </div>
+  </div>
+  <div class="viewer-stage" data-viewer-stage tabindex="0" aria-labelledby="viewer-title">
+    <div class="viewer-canvas" data-viewer-canvas aria-busy="false">
+      <img data-viewer-image alt="" draggable="false" hidden />
+    </div>
+    <div class="viewer-message" data-viewer-loading role="status" aria-live="polite" hidden>
+      <p data-image-loading><Copy es="$ imagen --cargando" en="$ image --loading" /></p>
+      <p data-image-loaded hidden><Copy es="$ imagen --lista" en="$ image --ready" /></p>
+      <div class="terminal-progress" aria-hidden="true"><span>[</span><span data-loader-square></span><span data-loader-square></span><span data-loader-square></span><span>]</span></div>
+      <p data-image-count>0 / 1</p>
+    </div>
+    <div class="viewer-message" data-viewer-error role="alert" hidden>
+      <p><Copy es="No se pudo cargar la imagen." en="The image could not be loaded." /></p>
+      <button type="button" data-viewer-retry><Copy es="Reintentar" en="Retry" /></button>
+    </div>
+  </div>
+  <footer class="viewer-footer">
+    <p data-viewer-caption></p>
+    <p id="viewer-help"><Copy es="Acerca y arrastra para explorar. Usa ← / → para cambiar de captura; con el área ampliada enfocada, las flechas desplazan la imagen. Usa + / − para zoom y 0 para ajustar." en="Zoom in and drag to explore. Use ← / → to change screenshots; when the zoomed image area is focused, arrow keys pan. Use + / − to zoom and 0 to fit." /></p>
+  </footer>
+</section>
+
+<script>
+  import { initImageViewer } from '../scripts/image-viewer.mjs';
+  initImageViewer();
+</script>

@@ -1,219 +1,162 @@
 ---
-import {Image} from "astro:assets"
-import principalCompilador from "../assets/img/Projects/Compilador/Captura de pantalla_20230220_131721.webp";
-import compilador1 from "../assets/img/Projects/Compilador/Captura de pantalla 2025-03-21 110645.webp";
-import compilador2 from "../assets/img/Projects/Compilador/Captura de pantalla 2025-03-21 112732.webp";
-import compilador3 from "../assets/img/Projects/Compilador/Captura de pantalla_20230220_131721.webp";
-import compilador4 from "../assets/img/Projects/Compilador/Captura de pantalla 2025-03-21 114041.webp";
-import compilador5 from "../assets/img/Projects/Compilador/Captura de pantalla 2025-03-21 114116.webp";
+import { Image } from 'astro:assets';
+import Copy from './Copy.astro';
+import principalCompilador from '../assets/img/Projects/Compilador/Captura de pantalla_20230220_131721.webp';
+import compilador1 from '../assets/img/Projects/Compilador/Captura de pantalla 2025-03-21 110645.webp';
+import compilador2 from '../assets/img/Projects/Compilador/Captura de pantalla 2025-03-21 112732.webp';
+import compilador4 from '../assets/img/Projects/Compilador/Captura de pantalla 2025-03-21 114041.webp';
+import compilador5 from '../assets/img/Projects/Compilador/Captura de pantalla 2025-03-21 114116.webp';
+import principalDesktop from "../assets/img/Projects/Administrador_de_usuarios_creador_de_PDF's/Impresión2.webp";
+import desktop1 from "../assets/img/Projects/Administrador_de_usuarios_creador_de_PDF's/Menú.webp";
+import desktop2 from "../assets/img/Projects/Administrador_de_usuarios_creador_de_PDF's/Impresión1.webp";
+import desktop3 from "../assets/img/Projects/Administrador_de_usuarios_creador_de_PDF's/ModificarUsuario.webp";
+import desktop4 from "../assets/img/Projects/Administrador_de_usuarios_creador_de_PDF's/Subir información.webp";
+import principalWeb from '../assets/img/Projects/comercializate/Captura desde 2025-03-19 08-48-40.webp';
+import web1 from '../assets/img/Projects/comercializate/Captura desde 2025-03-19 08-48-57.webp';
+import web2 from '../assets/img/Projects/comercializate/Captura desde 2025-03-19 08-48-45.webp';
+import web3 from '../assets/img/Projects/comercializate/Captura desde 2025-03-19 08-49-10.webp';
+import web4 from '../assets/img/Projects/comercializate/Captura desde 2025-03-19 08-50-09.webp';
+import web5 from '../assets/img/Projects/comercializate/Captura desde 2025-03-19 08-49-41.webp';
+import principalVideogame from '../assets/img/Projects/unity/unity.webp';
 
-import principalDesktop from "../assets/img/Projects/Administrador_de_usuarios_creador_de_PDF\'s/Impresión2.webp";
-import desktop1 from "../assets/img/Projects/Administrador_de_usuarios_creador_de_PDF\'s/Menú.webp";
-import desktop2 from "../assets/img/Projects/Administrador_de_usuarios_creador_de_PDF\'s/Impresión1.webp";
-import desktop3 from "../assets/img/Projects/Administrador_de_usuarios_creador_de_PDF\'s/ModificarUsuario.webp";
-import desktop4 from "../assets/img/Projects/Administrador_de_usuarios_creador_de_PDF\'s/Subir información.webp";
-
-import principalWeb from "../assets/img/Projects/comercializate/Captura desde 2025-03-19 08-48-40.webp";
-import web1 from "../assets/img/Projects/comercializate/Captura desde 2025-03-19 08-48-57.webp";
-import web2 from "../assets/img/Projects/comercializate/Captura desde 2025-03-19 08-48-45.webp";
-import web3 from "../assets/img/Projects/comercializate/Captura desde 2025-03-19 08-49-10.webp";
-import web4 from "../assets/img/Projects/comercializate/Captura desde 2025-03-19 08-50-09.webp";
-import web5 from "../assets/img/Projects/comercializate/Captura desde 2025-03-19 08-49-41.webp";
-
-import principalVideogame from "../assets/img/Projects/unity/unity.webp";
-
-import CardInfo from "../components/CardInfo.astro";
-import CarrouselImages from "./CarrouselImages.astro";
+const webEvidence = [web1, web2, web3, web4, web5];
+const desktopEvidence = [
+  { src: desktop1, es: 'Menú de la aplicación de recibos de agua', en: 'Water receipt application menu' },
+  { src: desktop2, es: 'Impresión de recibos de agua', en: 'Water receipt printing' },
+  { src: desktop3, es: 'Edición de un usuario del servicio de agua', en: 'Editing a water service user' },
+  { src: desktop4, es: 'Carga de información en la aplicación de recibos', en: 'Uploading information to the receipt application' },
+];
+const compilerEvidence = [compilador1, compilador2, compilador4, compilador5];
 ---
-<style>
-  ul > li {
-    list-style-position: inside;
-    padding-block: 0.4em;
-  }
 
-  aside > p {
-    margin-block: 1rem;
-  }
+<section id="projects" aria-labelledby="projects-title">
+  <div class="section-heading">
+    <h2 id="projects-title"><Copy es="Proyectos" en="Projects" /></h2>
+    <span class="section-path" aria-hidden="true">~/projects</span>
+  </div>
+  <div class="project-workspace">
+    <aside class="project-sidebar" aria-label="Projects / Proyectos">
+      <div class="project-overviews">
+        <div data-project-summary="project-web">
+          <h3><Copy es="Comercializate" en="Comercializate" /></h3>
+          <p class="category"><Copy es="Desarrollo web" en="Web development" /></p>
+          <p class="project-relationship"><Copy es="Freelance · Comercializate / RC Performance. Mismo diseño del panel, con diferentes reglas de negocio." en="Freelance · Comercializate / RC Performance. The same panel layout, with different business rules." /></p>
+      <p><Copy es="Panel de administración de Comercializate para que los usuarios gestionen sus propios datos y un administrador pueda gestionarlos también." en="Comercializate administration panel where users can manage their own data and an administrator can manage it too." /></p>
+        </div>
+        <div data-project-summary="project-desktop">
+          <h3><Copy es="Recibos de agua" en="Water receipts" /></h3>
+          <p class="category"><Copy es="Aplicación de escritorio" en="Desktop application" /></p>
+      <p><Copy es="Propuesta para administrar usuarios del servicio de agua y generar recibos en PDF, con SQLite como base de datos." en="A proposal to manage water service users and generate PDF receipts, using SQLite as the database." /></p>
+        </div>
+        <div data-project-summary="project-compiler">
+          <h3><Copy es="Compilador" en="Compiler" /></h3>
+          <p class="category"><Copy es="Herramientas de desarrollo" en="Development tools" /></p>
+      <p><Copy es="Compilador escrito en C# para un pequeño conjunto de instrucciones de C#. La última fase desarrollada fue la generación de código intermedio." en="A compiler written in C# for a small subset of C# instructions. Intermediate code generation was the last development phase." /></p>
+        </div>
+        <div data-project-summary="project-piano">
+          <h3><Copy es="Pianista en escritorio" en="Pianista on desktop" /></h3>
+          <p class="category"><Copy es="Videojuego" en="Video game" /></p>
+      <p><Copy es="Pequeña adaptación para escritorio del videojuego móvil Pianista, un intento de replicar sus mecánicas usando archivos MIDI." en="A small desktop adaptation of the mobile game Pianista, attempting to replicate its mechanics using MIDI files." /></p>
+        </div>
+      </div>
+      <nav class="project-list" aria-label="Select project / Seleccionar proyecto">
+          <a id="tab-project-web" href="#project-web"><Copy es="Comercializate" en="Comercializate" /><span class="work-indicator">[work: freelance]</span></a>
+          <a id="tab-project-desktop" href="#project-desktop"><Copy es="Recibos de agua" en="Water receipts" /></a>
+          <a id="tab-project-compiler" href="#project-compiler"><Copy es="Compilador" en="Compiler" /></a>
+          <a id="tab-project-piano" href="#project-piano"><Copy es="Pianista en escritorio" en="Pianista on desktop" /></a>
+      </nav>
+    </aside>
+    <div class="project-panels">
+      <article id="project-web" class="project-panel">
+        <div class="project-detail">
 
-  aside > h4 {
-    margin-bottom: 2rem;
-    font-weight: bold;
-  }
+      <ul>
+        <li><Copy es="Diseño responsivo" en="Responsive design" /></li>
+        <li><Copy es="Administración de usuarios y gestión de sus propios datos" en="User administration and self-service data management" /></li>
+      </ul>
+      <p><Copy es="En RC Performance trabajé con el mismo diseño de panel, pero con diferentes reglas de negocio: diseño responsivo, permisos por roles, generación de PDF y Excel, operaciones con múltiples bases de datos, edición manual de datos y administración básica de inventario. Las imágenes mostradas son de Comercializate, no de RCPerformance." en="At RC Performance I worked with the same panel layout, but with different business rules: responsive design, role-based permissions, PDF and Excel generation, operations across multiple databases, manual data editing and basic inventory management. The images shown are from Comercializate, not RCPerformance." /></p>
+      <div class="project-preview">
+        <a href={principalWeb.src}>
+          <Image src={principalWeb} width={principalWeb.width} alt="Vista principal del panel de Comercializate" data-alt-es="Vista principal del panel de Comercializate" data-alt-en="Main view of the Comercializate panel" />
+        </a>
+      </div>
+      <details class="evidence">
+        <summary><Copy es="Ver más capturas de Comercializate" en="See more Comercializate screenshots" /></summary>
+        <div class="evidence-grid">
+          {webEvidence.map((image, index) => (
+            <a href={image.src}>
+              <Image src={image} width={image.width} alt={`Captura ${index + 1} del panel de Comercializate`} data-alt-es={`Captura ${index + 1} del panel de Comercializate`} data-alt-en={`Comercializate panel screenshot ${index + 1}`} />
+            </a>
+          ))}
+        </div>
+      </details>
+        </div>
+      </article>
+      <article id="project-desktop" class="project-panel">
+        <div class="project-detail">
 
-  ul > li::marker {
-    content: "->";
-  }
+      <ul>
+        <li><Copy es="Administración de usuarios y carga de archivos Excel y CSV" en="User administration and Excel and CSV file uploads" /></li>
+        <li><Copy es="Generación de recibos para todos los usuarios o un rango" en="Receipt generation for all users or a selected range" /></li>
+        <li><Copy es="Incremento mensual de la deuda al abrir la aplicación" en="Monthly debt increases when the application is opened" /></li>
+      </ul>
+      <div class="project-preview">
+        <a href={principalDesktop.src}>
+          <Image src={principalDesktop} width={principalDesktop.width} alt="Vista de impresión de recibos de agua" data-alt-es="Vista de impresión de recibos de agua" data-alt-en="Water receipt printing view" />
+        </a>
+      </div>
+      <details class="evidence">
+        <summary><Copy es="Ver más capturas de la aplicación" en="See more application screenshots" /></summary>
+        <div class="evidence-grid">
+          {desktopEvidence.map((image) => (
+            <a href={image.src.src}>
+              <Image src={image.src} width={image.src.width} alt={image.es} data-alt-es={image.es} data-alt-en={image.en} />
+            </a>
+          ))}
+        </div>
+      </details>
+        </div>
+      </article>
+      <article id="project-compiler" class="project-panel">
+        <div class="project-detail">
 
-  aside {
-    line-height: 2;
-  }
+      <ul>
+        <li><Copy es="Analizadores léxico y semántico de implementación propia" en="Custom lexical and semantic analyzers" /></li>
+        <li><Copy es="Analizador sintáctico con el algoritmo LR(1)" en="Syntax analyzer using the LR(1) algorithm" /></li>
+        <li><Copy es="Generación propia de código intermedio de tres direcciones" en="Custom three-address intermediate code generation" /></li>
+      </ul>
+      <p><Copy es="A partir del código fuente, muestra errores y evalúa operaciones matemáticas que pueden expresarse en notación prefija. Si el código es válido, crea un archivo de texto con el código intermedio." en="Given source code, it reports errors and evaluates mathematical operations that can be expressed in prefix notation. If the code is valid, it creates a text file with the intermediate code." /></p>
+      <div class="project-preview">
+        <a href={principalCompilador.src}>
+          <Image src={principalCompilador} width={principalCompilador.width} alt="Vista principal del compilador" data-alt-es="Vista principal del compilador" data-alt-en="Main view of the compiler" />
+        </a>
+      </div>
+      <details class="evidence">
+        <summary><Copy es="Ver más capturas del compilador" en="See more compiler screenshots" /></summary>
+        <div class="evidence-grid">
+          {compilerEvidence.map((image, index) => (
+            <a href={image.src}>
+              <Image src={image} width={image.width} alt={`Captura ${index + 1} del compilador`} data-alt-es={`Captura ${index + 1} del compilador`} data-alt-en={`Compiler screenshot ${index + 1}`} />
+            </a>
+          ))}
+        </div>
+      </details>
+        </div>
+      </article>
+      <article id="project-piano" class="project-panel">
+        <div class="project-detail">
 
-  aside p {
-    text-wrap: balance;
-  }
-
-  @media (max-width: 65em) {
-    aside > h4 {
-      margin-block: 3rem;
-    }
-  }
-</style>
-
-<CardInfo hasDialog
-          className="sm:col-span-2 md:col-span-full sm:max-md:bg--red-500 lg:col-span-4 col-start-1 flex flex-col pb-4"
-          classNameArticle="flex flex-col gap-y-4">
-<span slot="title-card2" class="git-branch" data-section="Projects" data-project="Compiler"
-      data-value="Title">Compilador</span>
-    <Fragment slot="content">
-        <Image src={principalCompilador} alt="compilador"/>
-        <p data-section="Projects" data-project="Compiler" data-value="Resume">Un compilador para un pequeño conjunto de
-            instrucciones de C# escrito en C#, la última fase de desarrollo fue el código intermedio.</p>
-    </Fragment>
-    <Fragment slot="dialog-element">
-        <CarrouselImages>
-            <Image src={compilador1} alt="imagen-compilador"/>
-            <Image src={compilador2} alt="imagen-compilador"/>
-            <Image src={compilador3} alt="imagen-compilador"/>
-            <Image src={compilador4} alt="imagen-compilador"/>
-            <Image src={compilador5} alt="imagen-compilador"/>
-        </CarrouselImages>
-
-        <aside>
-            <h4 class="title-desc" data-section="Projects" data-project="Compiler" data-value="TitleDescription">
-                Características principales</h4>
-            <ul>
-                <li data-section="Projects" data-project="Compiler" data-value="List1">Implementación de
-                    analizador léxico propio
-                </li>
-                <li data-section="Projects" data-project="Compiler" data-value="List2">Uso del algoritmo LR(1)
-                    para el analizador sintáctico
-                </li>
-                <li data-section="Projects" data-project="Compiler" data-value="List3">Implementación propia del
-                    analizador semántico
-                </li>
-                <li data-section="Projects" data-project="Compiler" data-value="List4">Generación de
-                    implementación propia del código intermedio usando código de 3 direcciones
-                </li>
-            </ul>
-            <p data-section="Projects" data-project="Compiler" data-value="Description1">Este compilador puede
-                generar el código intermedio dado el código fuente, devuelve los errores y evalúa operaciones
-                matemáticas que puedan ser evaluadas usando notación prefija. Si el código fuente dado es
-                válido, el programa crea un archivo de texto con el código intermedio.</p>
-        </aside>
-    </Fragment>
-</CardInfo>
-<CardInfo hasDialog className="sm:col-span-2 md:col-span-full lg:col-span-3 flex flex-col pb-4"
-          classNameArticle="flex flex-col gap-y-4">
-    <span slot="title-card2" class="git-branch" data-section="Projects" data-project="Desktop" data-value="Title">Aplicación de escritorio</span>
-    <Fragment slot="content">
-        <Image src={principalDesktop} alt="escritorio"/>
-        <h4 class="info-project" data-section="Projects" data-project="Desktop" data-value="Resume">Administración de
-            usuarios para generar recibos de agua en PDF, manejo de usuarios con deudas automatizadas usando SQLite como
-            base de datos.</h4>
-    </Fragment>
-    <Fragment slot="dialog-element">
-        <CarrouselImages>
-            <Image src={desktop1} alt="escritorioPrincipal"/>
-            <Image src={desktop2} alt="escritorioPrincipal"/>
-            <Image src={desktop3} alt="escritorioPrincipal"/>
-            <Image src={desktop4} alt="escritorioPrincipal"/>
-        </CarrouselImages>
-        <aside>
-            <h4 class="title-desc" data-section="Projects" data-project="Desktop" data-value="TitleDescription">
-                Características principales</h4>
-            <ul>
-                <li data-section="Projects" data-project="Desktop" data-value="List1">Administración de
-                    usuarios
-                </li>
-                <li data-section="Projects" data-project="Desktop" data-value="List2">Subida de archivos Excel y
-                    csv
-                </li>
-                <li data-section="Projects" data-project="Desktop" data-value="List3">Incremento mensual de
-                    deuda de usuarios
-                </li>
-                <li data-section="Projects" data-project="Desktop" data-value="List4">Generación de recibos en
-                    PDF
-                </li>
-            </ul>
-            <p data-section="Projects" data-project="Desktop" data-value="Description1">Esta aplicación fue
-                hecha como una propuesta para administrar los usuarios del servicio de agua, permite la carga de
-                archivos Excel propios y CSV, genera el PDF con todos los recibos o solo un rango de usuarios e
-                incremente mensualmente la deuda de cada uno de estos cuando la aplicación es abierta.</p>
-        </aside>
-    </Fragment>
-</CardInfo>
-<CardInfo hasDialog className="md:col-span-full sm:col-span-2 lg:col-span-4 flex flex-col pb-4"
-          classNameArticle="flex flex-col gap-y-4">
-    <span slot="title-card2" class="git-branch" data-section="Projects" data-project="Web" data-value="Title">Desarrollo web</span>
-    <Fragment slot="content">
-        <Image src={principalWeb} alt="web"/>
-        <p data-section="Projects" data-project="Web" data-value="Resume1">Un panel de administración para que los
-            usuarios manejen sus propios datos, con la capacidad de que un administrador pueda manejar estos datos.</p>
-        <p data-section="Projects" data-project="Web" data-value="Resume2">Este tipo de panel es replicado en la
-            aplicación de la web de RCPerformance, las capacidades de este son similares.</p>
-    </Fragment>
-    <Fragment slot="dialog-element">
-        <CarrouselImages>
-            <Image src={web1} alt="web"/>
-            <Image src={web2} alt="web"/>
-            <Image src={web3} alt="web"/>
-            <Image src={web4} alt="web"/>
-            <Image src={web5} alt="web"/>
-        </CarrouselImages>
-        <aside>
-            <h4 class="title-desc">Características principales</h4>
-            <ul>
-                <li data-section="Projects" data-project="Web" data-value="List1">~Diseño responsive</li>
-                <li data-section="Projects" data-project="Web" data-value="List2">Administración de usuarios
-                </li>
-                <li data-section="Projects" data-project="Web" data-value="List3">Manejo de datos de usuario por
-                    ellos mismo
-                </li>
-            </ul>
-            <p data-section="Projects" data-project="Web" data-value="Description">En base a este panel(estilo)
-                trabajé para RCPerformance, las características de este proyecto son</p>
-            <ul>
-                <li data-section="Projects" data-project="Web" data-value="List4">Diseño responsivo</li>
-                <li data-section="Projects" data-project="Web" data-value="List5">Sistema de permisos de usuario
-                    por roles
-                </li>
-                <li data-section="Projects" data-project="Web" data-value="List6">Generación de PDF's y
-                    Excel's
-                </li>
-                <li data-section="Projects" data-project="Web" data-value="List7">Operaciones con multiples base
-                    de datos
-                </li>
-                <li data-section="Projects" data-project="Web" data-value="List8">Edición manual de datos y
-                    administración básica de inventario
-                </li>
-            </ul>
-        </aside>
-    </Fragment>
-</CardInfo>
-<CardInfo hasDialog className="md:col-span-full sm:col-span-2 lg:col-span-3 flex flex-col pb-4"
-          classNameArticle="flex flex-col gap-y-4">
-    <span slot="title-card2" class="git-branch" data-section="Projects" data-project="Videogame" data-value="Title">Pianista en Escritorio</span>
-    <Fragment slot="content">
-        <Image src={principalVideogame} alt="videojuego"/>
-        <p data-section="Projects" data-project="VideoGames" data-value="Resume">Pequeña adaptación del videojuego mobil
-            "Pianista" para escritorio, este juego es un intento de replicar las mecánicas usando archivos MIDI.</p>
-    </Fragment>
-    <Fragment slot="dialog-element">
-        <CarrouselImages>
-            <Image src={principalVideogame} alt="videojuego"/>
-        </CarrouselImages>
-        <aside>
-            <h4 class="title-desc">Características principales</h4>
-            <ul>
-                <li data-section="Projects" data-project="VideoGames" data-value="List1">Uso de archivos MIDI
-                </li>
-                <li data-section="Projects" data-project="VideoGames" data-value="List2">Jugabilidad con el
-                    teclado
-                </li>
-            </ul>
-            <p data-section="Projects" data-project="VideoGames" data-value="Description">Este juego fue
-                desarrollado con Unity, usando archivos MIDI creados de mi propia cuenta, y permitiendo la
-                captura de multiples teclas presionadas al mismo tiempo.</p>
-        </aside>
-    </Fragment>
-</CardInfo>
+      <ul>
+        <li><Copy es="Desarrollado con Unity y archivos MIDI de creación propia" en="Developed with Unity and self-created MIDI files" /></li>
+        <li><Copy es="Jugabilidad con teclado y captura de varias teclas simultáneas" en="Keyboard gameplay with simultaneous key presses" /></li>
+      </ul>
+      <div class="project-preview">
+        <a href={principalVideogame.src}>
+          <Image src={principalVideogame} width={principalVideogame.width} alt="Vista del juego de piano para escritorio" data-alt-es="Vista del juego de piano para escritorio" data-alt-en="Desktop piano game view" />
+        </a>
+      </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
