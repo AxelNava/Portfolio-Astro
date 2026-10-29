@@ -21,10 +21,10 @@ import ImageViewer from '../components/ImageViewer.astro';
       </div>
       <div class="identity">
         <div>
-          <h1>Axel Nava<span class="cursor" aria-hidden="true">_</span></h1>
+          <h1><span data-text-motion="type">Axel Nava<span class="cursor" aria-hidden="true">_</span></span></h1>
           <p class="role"><Copy es="Desarrollador FullStack" en="FullStack Developer" /></p>
         </div>
-        <p class="intro"><Copy es="Software para web, escritorio y herramientas. Entiendo el negocio para convertir sus necesidades en soluciones técnicas." en="Software for the web, desktop and developer tools. I understand the business to turn its needs into technical solutions." /></p>
+        <p class="intro"><span data-text-motion="type"><Copy es="Software para web, escritorio y herramientas. Entiendo el negocio para convertir sus necesidades en soluciones técnicas." en="Software for the web, desktop and developer tools. I understand the business to turn its needs into technical solutions." /><span class="cursor" aria-hidden="true">_</span></span></p>
       </div>
       <nav class="section-nav" aria-label="Portfolio">
         <a id="tab-experience" href="#experience"><Copy es="Experiencia" en="Experience" /></a>
@@ -36,7 +36,7 @@ import ImageViewer from '../components/ImageViewer.astro';
     <main id="main-content">
       <section id="experience" aria-labelledby="experience-title">
         <div class="section-heading">
-          <h2 id="experience-title"><Copy es="Experiencia" en="Experience" /></h2>
+          <h2 id="experience-title"><span data-text-motion="scramble"><Copy es="Experiencia" en="Experience" /></span></h2>
           <span class="section-path" aria-hidden="true">~/experience</span>
         </div>
         <article class="experience-row current-role">
@@ -45,9 +45,9 @@ import ImageViewer from '../components/ImageViewer.astro';
             <span class="current-label"><Copy es="Actual" en="Current" /></span>
           </div>
           <div class="experience-detail">
-            <h3>Unilink</h3>
-            <p class="position"><Copy es="Analista de Desarrollo" en="Development Analyst" /></p>
-            <p><Copy es="Migración de proyectos, mantenimiento de sistemas legacy y nuevas funcionalidades para un negocio B2B." en="Project migration, legacy system maintenance and new features for a B2B business." /></p>
+            <h3><span data-text-motion="scramble">Unilink</span></h3>
+            <p class="position"><span data-text-motion="scramble"><Copy es="Analista de Desarrollo" en="Development Analyst" /></span></p>
+            <p><span data-text-motion="scramble"><Copy es="Migración de proyectos, mantenimiento de sistemas legacy y nuevas funcionalidades para un negocio B2B." en="Project migration, legacy system maintenance and new features for a B2B business." /></span></p>
             <ul>
               <li><Copy es="Liderazgo técnico en la migración de proyectos .NET Framework." en="Technical leadership in migrating .NET Framework projects." /></li>
               <li><Copy es="Unificación de tres proyectos similares mediante el patrón Strategy." en="Consolidation of three similar projects using the Strategy pattern." /></li>
@@ -63,9 +63,9 @@ import ImageViewer from '../components/ImageViewer.astro';
         <article class="experience-row">
           <div class="date-rail"><p><Copy es="Experiencia anterior" en="Previous experience" /></p><span><Copy es="Casi 2 años" en="Nearly 2 years" /></span></div>
           <div class="experience-detail">
-            <h3>Freelance</h3>
-            <p class="position">Comercializate · RCPerformanceDiesel</p>
-            <p><Copy es="Desarrollo web FullStack: paneles de administración, gestión de usuarios y funcionalidades para las operaciones del negocio." en="FullStack web development: administration panels, user management and features supporting business operations." /></p>
+            <h3><span data-text-motion="scramble">Freelance</span></h3>
+            <p class="position"><span data-text-motion="scramble">Comercializate · RCPerformanceDiesel</span></p>
+            <p><span data-text-motion="scramble"><Copy es="Desarrollo web FullStack: paneles de administración, gestión de usuarios y funcionalidades para las operaciones del negocio." en="FullStack web development: administration panels, user management and features supporting business operations." /></span></p>
             <a class="text-link" href="#project-web" data-related-project><Copy es="Explorar los proyectos relacionados" en="Explore related projects" /><span aria-hidden="true"> →</span></a>
           </div>
         </article>
@@ -104,5 +104,7 @@ import ImageViewer from '../components/ImageViewer.astro';
   for (const button of document.querySelectorAll<HTMLButtonElement>('button[data-language]')) {
     button.addEventListener('click', () => setLanguage(button.dataset.language));
   }
+  import { initTextMotion } from '../scripts/text-motion.mjs';
+  initTextMotion();
   document.dispatchEvent(new Event('portfolio:ready'));
 </script>

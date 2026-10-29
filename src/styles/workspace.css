@@ -61,6 +61,13 @@ h1, h2, h3, .project-list a { overflow-wrap: anywhere; }
 .identity { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 2rem; padding: 1.25rem 1.75rem; }
 h1 { font-family: 'Cascadia Code', monospace; font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; line-height: 1.15; letter-spacing: -0.03em; }
 .cursor { color: var(--status); }
+[data-text-motion] { position: relative; display: inline-block; max-width: 100%; vertical-align: top; }
+.motion-active > .motion-content { opacity: 0; }
+.motion-visual { position: absolute; inset: 0; overflow-wrap: anywhere; }
+@media (prefers-reduced-motion: no-preference) {
+  .cursor.is-blinking { animation: cursor-blink 1s step-end 4; }
+  @keyframes cursor-blink { 50% { opacity: 0; } }
+}
 .role { color: var(--link); margin-top: 0.75rem; }
 .intro { color: var(--muted); font-size: 0.875rem; max-width: 50ch; }
 .section-nav { display: flex; gap: 0; padding: 0 1.75rem; border-bottom: 1px solid var(--rule); background: var(--inset); }
