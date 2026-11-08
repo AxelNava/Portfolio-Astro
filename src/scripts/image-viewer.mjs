@@ -85,9 +85,12 @@ export function initImageViewer(root = document) {
   function showImage() {
     displayRevision += 1;
     const source = gallery[index].querySelector('img');
+    const url = gallery[index].href;
+    const cached = imageCache.get(url);
+    const cachedReady = cached && cached.complete && cached.naturalWidth > 0;
     ready = false;
     image.hidden = true;
-    loading.hidden = false;
+    loading.hidden = Boolean(cachedReady);
     loading.querySelector('[data-image-loading]').hidden = false;
     loading.querySelector('[data-image-loaded]').hidden = true;
     loading.querySelector('[data-image-count]').textContent = '0 / 1';
@@ -97,6 +100,8 @@ export function initImageViewer(root = document) {
     canvas.style.width = '';
     canvas.style.height = '';
     zoomTo(1);
+    if (index === 0 && root.activeElement === previous) next.focus();
+    if (index === gallery.length - 1 && root.activeElement === next) previous.focus();
     previous.disabled = index === 0;
     next.disabled = index === gallery.length - 1;
     find('[data-viewer-counter]').textContent = `${index + 1} / ${gallery.length}`;
@@ -106,8 +111,6 @@ export function initImageViewer(root = document) {
       if (position === index) square.setAttribute('aria-current', 'true');
       return square;
     }));
-    const url = gallery[index].href;
-    const cached = imageCache.get(url);
     if (cached && cached !== image) { image.replaceWith(cached); image = cached; }
     else if (!cached) {
       const nextImage = imageTemplate.cloneNode();
@@ -118,6 +121,7 @@ export function initImageViewer(root = document) {
       imageCache.set(url, image);
       image.dataset.cacheUrl = url;
     }
+    image.hidden = true;
     image.alt = source.alt;
     const caption = find('[data-viewer-caption]');
     caption.textContent = source.alt;
@@ -127,12 +131,12 @@ export function initImageViewer(root = document) {
     image.dataset.altEn = caption.dataset.en;
     if (!cached) image.src = url;
     else if (image.complete) {
-      if (image.naturalWidth) imageLoaded(image);
+      if (image.naturalWidth) imageLoaded(image, true);
       else imageFailed(image);
     }
   }
 
-  function imageLoaded(loaded) {
+  function imageLoaded(loaded, immediate = false) {
     if (loaded !== image) return;
     ready = true;
     loading.querySelector('[data-image-loading]').hidden = true;
@@ -140,13 +144,15 @@ export function initImageViewer(root = document) {
     loading.querySelector('[data-image-count]').textContent = '1 / 1';
     setLoaderProgress(loading, 'image', 'loaded');
     const revision = displayRevision;
-    setTimeout(() => {
+    const reveal = () => {
       if (revision !== displayRevision || image !== loaded || !ready) return;
       loading.hidden = true;
       image.hidden = false;
       canvas.setAttribute('aria-busy', 'false');
       layout();
-    }, 500);
+    };
+    if (immediate) reveal();
+    else setTimeout(reveal, 500);
     error.hidden = true;
     zoomTo(1);
   }

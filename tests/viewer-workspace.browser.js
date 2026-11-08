@@ -13,11 +13,20 @@ async page => {
   check(await page.locator('[data-viewer-square]').count() === 6, 'each image needs a square indicator');
   check(await page.locator('[data-viewer-square][aria-current="true"]').count() === 1, 'one square must indicate current image');
   await page.waitForFunction(() => document.querySelector('[data-viewer-image]').naturalWidth > 0);
+  await page.locator('[data-viewer-image]').waitFor({ state: 'visible' });
   await page.evaluate(() => { window.visitedViewerImage = document.querySelector('[data-viewer-image]'); });
   await page.locator('[data-viewer-next]').click();
   check(await page.locator('[data-viewer-counter]').textContent() === '2 / 6', 'gallery navigation must still work');
   check(await page.locator('[data-viewer-square]').nth(1).getAttribute('aria-current') === 'true', 'square indicator must follow the image');
-  await page.locator('[data-viewer-prev]').click();
+  const cachedState = await page.evaluate(() => {
+    document.querySelector('[data-viewer-prev]').click();
+    return {
+      imageHidden: document.querySelector('[data-viewer-image]').hidden,
+      loaderHidden: document.querySelector('[data-viewer-loading]').hidden,
+      busy: document.querySelector('[data-viewer-canvas]').getAttribute('aria-busy'),
+    };
+  });
+  check(!cachedState.imageHidden && cachedState.loaderHidden && cachedState.busy === 'false', 'loaded cached image must appear immediately without a loader');
   check(await page.evaluate(() => window.visitedViewerImage === document.querySelector('[data-viewer-image]')), 'visited image element must be reused in this page');
   await page.locator('[data-viewer-next]').click();
   await page.locator('[data-portfolio-tab]').click();

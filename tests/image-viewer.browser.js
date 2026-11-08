@@ -64,10 +64,13 @@ async (page) => {
     check(await page.locator('[data-viewer-prev]').isDisabled(), 'first image has no previous');
     await page.keyboard.press('ArrowRight');
     check(await page.locator('[data-viewer-counter]').textContent() === '2 / 6', 'right arrow moves within gallery');
-    for(let i=0;i<8;i++) await page.locator('[data-viewer-next]').click({ force: true, timeout:500 }).catch(()=>{});
+    for(let i=0;i<4;i++) await page.locator('[data-viewer-next]').click();
     check(await page.locator('[data-viewer-counter]').textContent() === '6 / 6', 'last image stays inside current project');
     check(await page.locator('[data-viewer-next]').isDisabled(), 'last image has no next');
-    await page.locator('[data-viewer-close]').click();
+    check(await page.locator('[data-viewer-prev]').evaluate(button => button === document.activeElement), 'focus moves to an enabled viewer control when next is disabled');
+    await page.keyboard.press('Escape');
+    check(!(await page.locator('#image-viewer').isVisible()), 'Escape closes viewer after next becomes disabled');
+    check(await page.locator('#project-web .project-preview a').evaluate(a => a === document.activeElement), 'Escape restores focus to the gallery opener');
     await page.locator('#tab-project-piano').click();
     await page.locator('#project-piano .project-preview a').click();
     check(await page.locator('[data-viewer-counter]').textContent() === '1 / 1', 'single-image project must not reuse other project gallery');
