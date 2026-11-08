@@ -1,0 +1,33 @@
+# Terminal loaders
+Branch: refactor/neovim-experience. Preserve existing work; commits require explicit authorization.
+
+## Specs
+S1. «diseña un loader para 2 cosas, uno para las imágenes, y otro para iniciar la página, para así poder mostrar primero el loader y el usuario no tenga que esperar tanto hasta que todo esté cargado. La barra de progreso de ambos que pueda ser con Cuadrados que se van rellenando y dentro de corchetes [ ] una vez terminado, mostrar en formato de terminal que se ha cargado todo, hacer un comando para transitar entre el loader y el contenido y finalizar para mostrar todo»
+S2. «1 - transición automatica
+2 - solo lo necesario, las imagenes se pueden cargar en segundo plano»
+S3. «Si, continua con las comprobaciones, porque ahora mismo veo que el loader como tal no está "funcionando" me refiero a que se ve el loader, pero no es funcional en el sentido de que la barra de carga no muestra efectivamente cuanto está cargando, nada más funciona como placeholder al inicio de la pagina, esto probando con una red 3g y desactivando el caché
+Así queda
+@C:/Users/napa2/AppData/Local/JetBrains/WebStorm2026.2/air/prompt-attachments/AIR_Screenshot_2026-10-27_09-04-11.png»
+
+S4. «1»
+
+## Tasks
+T1 | S1-S4 | inline | pending, partial | Startup loader and automatic transition implemented; browser and no-JS checks pass; post-fix independent and assistive-technology verification remain. Commit: not authorized.
+T2 | S1-S4 | inline | pending, partial | Image loader implemented; browser loading, success and retry checked; post-fix independent and assistive-technology verification remain. Commit: not authorized.
+T3 | S1-S4 | parent + independent verifier | pending | Review initial findings after fixes; confirm screen-reader behavior and visual image loader. Commit: not authorized.
+
+## Log
+L1. «diseña un loader para 2 cosas, uno para las imágenes, y otro para iniciar la página, para así poder mostrar primero el loader y el usuario no tenga que esperar tanto hasta que todo esté cargado. La barra de progreso de ambos que pueda ser con Cuadrados que se van rellenando y dentro de corchetes [ ] una vez terminado, mostrar en formato de terminal que se ha cargado todo, hacer un comando para transitar entre el loader y el contenido y finalizar para mostrar todo»
+L2. «1 - transición automatica
+2 - solo lo necesario, las imagenes se pueden cargar en segundo plano»
+L3. Added square progress for startup and viewer; real started/completed milestones, no byte percentage. Startup completes on DOM readiness, not image loads; a 500ms completion display precedes automatic transition, and a five-second fallback restores the portfolio if initialization fails. No-JS leaves content visible.
+L4. node --test tests/*.test.mjs 7/7, pnpm build and git diff --check passed. Browser delayed scripts and image, observed loading, completion, inert restoration, image presentation, and 3 prior viewer scenarios; simulated image 404 and retry recovered. No-JS browser confirmed visible portfolio. Read back startup captures mobile dark/reduced-motion and desktop light. Independent reviewer found success messages too brief, keyboard access under overlay, and aria-busy potentially suppressing status; adjusted duration, inert/fallback and busy scope, then ran final browser checks. No independent post-fix verdict, screen-reader or visual image-loader verification; do not claim complete.
+
+L5. «Si, continua con las comprobaciones, porque ahora mismo veo que el loader como tal no está "funcionando" me refiero a que se ve el loader, pero no es funcional en el sentido de que la barra de carga no muestra efectivamente cuanto está cargando, nada más funciona como placeholder al inicio de la pagina, esto probando con una red 3g y desactivando el caché
+Así queda
+@C:/Users/napa2/AppData/Local/JetBrains/WebStorm2026.2/air/prompt-attachments/AIR_Screenshot_2026-10-27_09-04-11.png»
+L6. Reproduced via Chromium CDP with cache disabled, 400ms latency and 50kB/s download: initial loader samples had 0 filled then 3 ready; no intermediate real measurement. Native browser page loads do not expose a unified total byte count for all HTML, CSS, scripts and images. Prior S2 excludes images from blocking startup.
+L7. User chose «1»: count completed essential resources or stages, not bytes.
+L8. Implemented actual startup counts (stylesheet load, document ready, workspace initialization) and image 0/1 then 1/1. RED/GREEN tests: delayed scripts observe 1/3 before completion; image loading observes 0/1 then 1/1. pnpm build, 6 Node tests and diff --check pass. Chromium 3G simulation (400ms latency, 50kB/s, cache disabled) observed 0/3 → 1/3 → 3/3; steps can coincide and are not byte progress. CSS failure exposed false success when link.sheet existed despite error; RED reproduced and fixed by tracking successful load events; GREEN verifies no false ready and 15-second fail-open. Follow-up independent verifier inspected that fix and found the loader could remain visible if CSS failed; RED reproduced, hidden-attribute fix GREEN, normal scenario GREEN after rebuild. No independent verdict after latest fix; verifier noted possible stylesheet ordering edge cases, not reproduced. Image loader mobile dark capture read back; no screen-reader verification.
+L9. On user authorization, independent verifier found slow CSS blocked the body activation script; reproduced loader hidden during pending CSS. Added critical inline styles and early MutationObserver; slow-CSS browser test RED/GREEN, stalled CSS 15-second fail-open, aborted CSS fallback, normal delayed loader, no-JS, build, 6 Node tests and diff-check passed. Independent follow-up confirmed parser-blocking issue addressed and current build has one stylesheet after boot listener; actual paint while stylesheet pending remains unproven. Attempted CDP screenshot while holding CSS; failed with `ReferenceError: require is not defined`, so no paint-level evidence. Browser accessibility tree exposed status live=polite with content inert; no actual screen reader available. No post-fix completion claim.
+L10. User accepted deferring paint-under-stalled-CSS and real screen-reader checks, requested a commit, and confirmed «Si, solo lo que es referente a este proyecto». Commit f71be3d includes project code, tests, README, design/product context and dependency updates; incidental tool state, screenshots and task notes excluded. Independent staged review found no blocker; native assessment remained unassessable due unrelated untracked files. Six Node tests and staged diff-check passed. Remaining manual proofs are not claimed.
