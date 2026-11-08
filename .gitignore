@@ -29,5 +29,8 @@ pnpm-debug.log*
 .playwright-mcp/
 .claude/
 .codex/
-.impeccable/
+# Impeccable local runtime state and review captures (text briefs are committed)
+.impeccable/config.local.json
+.impeccable/review/
+.impeccable/questions/*.log
 .pi/work/

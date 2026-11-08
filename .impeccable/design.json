@@ -1,0 +1,404 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-27T01:24:19.707762+00:00",
+  "title": "Design System: Axel Nava",
+  "extensions": {
+    "colorMeta": {
+      "canvas-dark": {
+        "role": "neutral",
+        "displayName": "Canvas Dark",
+        "canonical": "rgb(15, 15, 15)",
+        "tonalRamp": [
+          "oklch(15.0% 0.0000 89.88)",
+          "oklch(27.0% 0.0000 89.88)",
+          "oklch(39.0% 0.0000 89.88)",
+          "oklch(51.0% 0.0000 89.88)",
+          "oklch(63.0% 0.0000 89.88)",
+          "oklch(75.0% 0.0000 89.88)",
+          "oklch(87.0% 0.0000 89.88)",
+          "oklch(95.0% 0.0000 89.88)"
+        ],
+        "tonalRampNote": "Synthesized preview ramp; not an implemented or approved UI token scale."
+      },
+      "canvas-light": {
+        "role": "neutral",
+        "displayName": "Canvas Light",
+        "canonical": "#7c7f93",
+        "tonalRamp": [
+          "oklch(15.0% 0.0076 278.69)",
+          "oklch(27.0% 0.0152 278.69)",
+          "oklch(39.0% 0.0244 278.69)",
+          "oklch(51.0% 0.0305 278.69)",
+          "oklch(63.0% 0.0305 278.69)",
+          "oklch(75.0% 0.0244 278.69)",
+          "oklch(87.0% 0.0137 278.69)",
+          "oklch(95.0% 0.0046 278.69)"
+        ],
+        "tonalRampNote": "Synthesized preview ramp; not an implemented or approved UI token scale."
+      },
+      "mocha-base": {
+        "role": "neutral",
+        "displayName": "Mocha Base",
+        "canonical": "#1e1e2e",
+        "tonalRamp": [
+          "oklch(15.0% 0.0076 283.91)",
+          "oklch(27.0% 0.0152 283.91)",
+          "oklch(39.0% 0.0243 283.91)",
+          "oklch(51.0% 0.0304 283.91)",
+          "oklch(63.0% 0.0304 283.91)",
+          "oklch(75.0% 0.0243 283.91)",
+          "oklch(87.0% 0.0137 283.91)",
+          "oklch(95.0% 0.0046 283.91)"
+        ],
+        "tonalRampNote": "Synthesized preview ramp; not an implemented or approved UI token scale."
+      },
+      "mocha-crust": {
+        "role": "neutral",
+        "displayName": "Mocha Crust",
+        "canonical": "#11111b",
+        "tonalRamp": [
+          "oklch(15.0% 0.0051 284.20)",
+          "oklch(27.0% 0.0102 284.20)",
+          "oklch(39.0% 0.0163 284.20)",
+          "oklch(51.0% 0.0204 284.20)",
+          "oklch(63.0% 0.0204 284.20)",
+          "oklch(75.0% 0.0163 284.20)",
+          "oklch(87.0% 0.0092 284.20)",
+          "oklch(95.0% 0.0031 284.20)"
+        ],
+        "tonalRampNote": "Synthesized preview ramp; not an implemented or approved UI token scale."
+      },
+      "mocha-surface0": {
+        "role": "neutral",
+        "displayName": "Mocha Surface0",
+        "canonical": "#313244",
+        "tonalRamp": [
+          "oklch(15.0% 0.0080 281.98)",
+          "oklch(27.0% 0.0159 281.98)",
+          "oklch(39.0% 0.0255 281.98)",
+          "oklch(51.0% 0.0319 281.98)",
+          "oklch(63.0% 0.0319 281.98)",
+          "oklch(75.0% 0.0255 281.98)",
+          "oklch(87.0% 0.0143 281.98)",
+          "oklch(95.0% 0.0048 281.98)"
+        ],
+        "tonalRampNote": "Synthesized preview ramp; not an implemented or approved UI token scale."
+      },
+      "mocha-overlay1": {
+        "role": "neutral",
+        "displayName": "Mocha Overlay1",
+        "canonical": "#7f849c",
+        "tonalRamp": [
+          "oklch(15.0% 0.0092 276.00)",
+          "oklch(27.0% 0.0183 276.00)",
+          "oklch(39.0% 0.0293 276.00)",
+          "oklch(51.0% 0.0367 276.00)",
+          "oklch(63.0% 0.0367 276.00)",
+          "oklch(75.0% 0.0293 276.00)",
+          "oklch(87.0% 0.0165 276.00)",
+          "oklch(95.0% 0.0055 276.00)"
+        ],
+        "tonalRampNote": "Synthesized preview ramp; not an implemented or approved UI token scale."
+      },
+      "mocha-text": {
+        "role": "neutral",
+        "displayName": "Mocha Text",
+        "canonical": "#cdd6f4",
+        "tonalRamp": [
+          "oklch(15.0% 0.0106 272.28)",
+          "oklch(27.0% 0.0213 272.28)",
+          "oklch(39.0% 0.0340 272.28)",
+          "oklch(51.0% 0.0426 272.28)",
+          "oklch(63.0% 0.0426 272.28)",
+          "oklch(75.0% 0.0340 272.28)",
+          "oklch(87.0% 0.0191 272.28)",
+          "oklch(95.0% 0.0064 272.28)"
+        ],
+        "tonalRampNote": "Synthesized preview ramp; not an implemented or approved UI token scale."
+      },
+      "mocha-subtext0": {
+        "role": "neutral",
+        "displayName": "Mocha Subtext0",
+        "canonical": "#a6adc8",
+        "tonalRamp": [
+          "oklch(15.0% 0.0099 273.93)",
+          "oklch(27.0% 0.0198 273.93)",
+          "oklch(39.0% 0.0317 273.93)",
+          "oklch(51.0% 0.0396 273.93)",
+          "oklch(63.0% 0.0396 273.93)",
+          "oklch(75.0% 0.0317 273.93)",
+          "oklch(87.0% 0.0178 273.93)",
+          "oklch(95.0% 0.0059 273.93)"
+        ],
+        "tonalRampNote": "Synthesized preview ramp; not an implemented or approved UI token scale."
+      },
+      "mocha-blue": {
+        "role": "primary",
+        "displayName": "Mocha Blue",
+        "canonical": "#89b4fa",
+        "tonalRamp": [
+          "oklch(15.0% 0.0278 259.88)",
+          "oklch(27.0% 0.0557 259.88)",
+          "oklch(39.0% 0.0891 259.88)",
+          "oklch(51.0% 0.1113 259.88)",
+          "oklch(63.0% 0.1113 259.88)",
+          "oklch(75.0% 0.0891 259.88)",
+          "oklch(87.0% 0.0501 259.88)",
+          "oklch(95.0% 0.0167 259.88)"
+        ],
+        "tonalRampNote": "Synthesized preview ramp; not an implemented or approved UI token scale."
+      },
+      "mocha-green": {
+        "role": "primary",
+        "displayName": "Mocha Green",
+        "canonical": "#a6e3a1",
+        "tonalRamp": [
+          "oklch(15.0% 0.0273 142.72)",
+          "oklch(27.0% 0.0546 142.72)",
+          "oklch(39.0% 0.0874 142.72)",
+          "oklch(51.0% 0.1092 142.72)",
+          "oklch(63.0% 0.1092 142.72)",
+          "oklch(75.0% 0.0874 142.72)",
+          "oklch(87.0% 0.0492 142.72)",
+          "oklch(95.0% 0.0164 142.72)"
+        ],
+        "tonalRampNote": "Synthesized preview ramp; not an implemented or approved UI token scale."
+      },
+      "mocha-maroon": {
+        "role": "secondary",
+        "displayName": "Mocha Maroon",
+        "canonical": "#eba0ac",
+        "tonalRamp": [
+          "oklch(15.0% 0.0226 8.85)",
+          "oklch(27.0% 0.0452 8.85)",
+          "oklch(39.0% 0.0723 8.85)",
+          "oklch(51.0% 0.0903 8.85)",
+          "oklch(63.0% 0.0903 8.85)",
+          "oklch(75.0% 0.0723 8.85)",
+          "oklch(87.0% 0.0406 8.85)",
+          "oklch(95.0% 0.0135 8.85)"
+        ],
+        "tonalRampNote": "Synthesized preview ramp; not an implemented or approved UI token scale."
+      },
+      "mocha-red": {
+        "role": "secondary",
+        "displayName": "Mocha Red",
+        "canonical": "#f38ba8",
+        "tonalRamp": [
+          "oklch(15.0% 0.0324 2.76)",
+          "oklch(27.0% 0.0649 2.76)",
+          "oklch(39.0% 0.1038 2.76)",
+          "oklch(51.0% 0.1297 2.76)",
+          "oklch(63.0% 0.1297 2.76)",
+          "oklch(75.0% 0.1038 2.76)",
+          "oklch(87.0% 0.0584 2.76)",
+          "oklch(95.0% 0.0195 2.76)"
+        ],
+        "tonalRampNote": "Synthesized preview ramp; not an implemented or approved UI token scale."
+      },
+      "mocha-peach": {
+        "role": "secondary",
+        "displayName": "Mocha Peach",
+        "canonical": "#fab387",
+        "tonalRamp": [
+          "oklch(15.0% 0.0254 52.63)",
+          "oklch(27.0% 0.0507 52.63)",
+          "oklch(39.0% 0.0812 52.63)",
+          "oklch(51.0% 0.1015 52.63)",
+          "oklch(63.0% 0.1015 52.63)",
+          "oklch(75.0% 0.0812 52.63)",
+          "oklch(87.0% 0.0457 52.63)",
+          "oklch(95.0% 0.0152 52.63)"
+        ],
+        "tonalRampNote": "Synthesized preview ramp; not an implemented or approved UI token scale."
+      },
+      "latte-base": {
+        "role": "neutral",
+        "displayName": "Latte Base",
+        "canonical": "#eff1f5",
+        "tonalRamp": [
+          "oklch(15.0% 0.0014 264.53)",
+          "oklch(27.0% 0.0029 264.53)",
+          "oklch(39.0% 0.0046 264.53)",
+          "oklch(51.0% 0.0058 264.53)",
+          "oklch(63.0% 0.0058 264.53)",
+          "oklch(75.0% 0.0046 264.53)",
+          "oklch(87.0% 0.0026 264.53)",
+          "oklch(95.0% 0.0009 264.53)"
+        ],
+        "tonalRampNote": "Synthesized preview ramp; not an implemented or approved UI token scale."
+      },
+      "latte-surface0": {
+        "role": "neutral",
+        "displayName": "Latte Surface0",
+        "canonical": "#ccd0da",
+        "tonalRamp": [
+          "oklch(15.0% 0.0036 268.48)",
+          "oklch(27.0% 0.0072 268.48)",
+          "oklch(39.0% 0.0116 268.48)",
+          "oklch(51.0% 0.0145 268.48)",
+          "oklch(63.0% 0.0145 268.48)",
+          "oklch(75.0% 0.0116 268.48)",
+          "oklch(87.0% 0.0065 268.48)",
+          "oklch(95.0% 0.0022 268.48)"
+        ],
+        "tonalRampNote": "Synthesized preview ramp; not an implemented or approved UI token scale."
+      },
+      "latte-overlay1": {
+        "role": "neutral",
+        "displayName": "Latte Overlay1",
+        "canonical": "#8c8fa1",
+        "tonalRamp": [
+          "oklch(15.0% 0.0067 278.12)",
+          "oklch(27.0% 0.0134 278.12)",
+          "oklch(39.0% 0.0215 278.12)",
+          "oklch(51.0% 0.0269 278.12)",
+          "oklch(63.0% 0.0269 278.12)",
+          "oklch(75.0% 0.0215 278.12)",
+          "oklch(87.0% 0.0121 278.12)",
+          "oklch(95.0% 0.0040 278.12)"
+        ],
+        "tonalRampNote": "Synthesized preview ramp; not an implemented or approved UI token scale."
+      },
+      "latte-text": {
+        "role": "neutral",
+        "displayName": "Latte Text",
+        "canonical": "#4c4f69",
+        "tonalRamp": [
+          "oklch(15.0% 0.0108 279.33)",
+          "oklch(27.0% 0.0215 279.33)",
+          "oklch(39.0% 0.0344 279.33)",
+          "oklch(51.0% 0.0430 279.33)",
+          "oklch(63.0% 0.0430 279.33)",
+          "oklch(75.0% 0.0344 279.33)",
+          "oklch(87.0% 0.0194 279.33)",
+          "oklch(95.0% 0.0065 279.33)"
+        ],
+        "tonalRampNote": "Synthesized preview ramp; not an implemented or approved UI token scale."
+      },
+      "latte-green": {
+        "role": "neutral",
+        "displayName": "Latte Green",
+        "canonical": "#40a02b",
+        "tonalRamp": [
+          "oklch(15.0% 0.0443 140.44)",
+          "oklch(27.0% 0.0886 140.44)",
+          "oklch(39.0% 0.1417 140.44)",
+          "oklch(51.0% 0.1772 140.44)",
+          "oklch(63.0% 0.1772 140.44)",
+          "oklch(75.0% 0.1417 140.44)",
+          "oklch(87.0% 0.0797 140.44)",
+          "oklch(95.0% 0.0266 140.44)"
+        ],
+        "tonalRampNote": "Synthesized preview ramp; not an implemented or approved UI token scale."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "cursor-blink",
+        "value": "blink 1s step-end infinite",
+        "purpose": "Observed prompt cursor animation; not a newly mandated behavior."
+      },
+      {
+        "name": "title-character-interval",
+        "value": "100ms",
+        "purpose": "Observed header typing interval."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "40rem"
+      },
+      {
+        "name": "md",
+        "value": "48rem"
+      },
+      {
+        "name": "lg",
+        "value": "64rem"
+      },
+      {
+        "name": "wrapper-padding",
+        "value": "35em"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Command Action",
+      "kind": "button",
+      "refersTo": "command-action",
+      "description": "Text-first command action; hover and coarse-pointer borders match the source.",
+      "html": "<button class=\"ds-command\">set language english &gt;&gt;</button>",
+      "css": ".ds-command{font-family:\"Cascadia Code\",system-ui;background:transparent;color:inherit;border:2px solid transparent;border-radius:2px;justify-self:end;align-self:end}.ds-command:hover{cursor:pointer;border-color:var(--color-mocha-blue,#89b4fa)}@media(pointer:none),(pointer:coarse){.ds-command{margin-bottom:.3em;border-color:var(--color-mocha-blue,#89b4fa)}}"
+    },
+    {
+      "name": "Project Action",
+      "kind": "button",
+      "refersTo": "project-action",
+      "description": "Padded green-border action with the optional source color transition.",
+      "html": "<button class=\"ds-project\">Da click para mostrar más &gt;&gt;</button>",
+      "css": ".ds-project{font-family:\"FiraCode\",system-ui;background:transparent;color:inherit;border:2px solid transparent;border-radius:2px;padding:1rem;opacity:.8;transition-property:color,background-color,border-color;transition-duration:150ms}.ds-project:hover{cursor:pointer;border-color:var(--color-mocha-green,#a6e3a1)}@media(pointer:none),(pointer:coarse){.ds-project{margin-bottom:.3em;border-color:var(--color-mocha-green,#a6e3a1)}}"
+    },
+    {
+      "name": "Information Panel — Dark",
+      "kind": "card",
+      "refersTo": "info-panel-dark",
+      "description": "Explicit dark-theme panel sample; light-theme styling is not inferred.",
+      "html": "<section class=\"ds-info\"><h2>Experiencia</h2><article>Desarrollo web, escritorio y herramientas.</article></section>",
+      "css": ".ds-info{font-family:\"FiraCode\",system-ui;background:var(--color-mocha-base,#1e1e2e);color:var(--color-mocha-subtext0,#a6adc8);border:2px solid var(--color-mocha-overlay1,#7f849c);padding:0 .75rem;backdrop-filter:blur(8px)}.ds-info h2{font-size:1.5rem;font-weight:700;line-height:3.5rem;margin:1rem 0;color:var(--color-mocha-maroon,#eba0ac)}.ds-info article{font-size:1.25rem;line-height:2.5rem;padding-bottom:1rem}"
+    },
+    {
+      "name": "Knowledge Panel — Dark",
+      "kind": "card",
+      "refersTo": "knowledge-panel-dark",
+      "description": "Inset knowledge-group sample. Source icon assets are intentionally omitted.",
+      "html": "<article class=\"ds-knowledge\"><h3>Desarrollo Web</h3><div>HTML CSS</div></article>",
+      "css": ".ds-knowledge{font-family:\"FiraCode\",system-ui;background:var(--color-mocha-crust,#11111b);color:var(--color-mocha-subtext0,#a6adc8);padding:0 1rem}.ds-knowledge h3{color:var(--color-mocha-blue,#89b4fa);margin:1rem 0}.ds-knowledge div{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;padding-bottom:1rem}@media(min-width:48rem){.ds-knowledge h3{font-size:1.2rem}}"
+    },
+    {
+      "name": "Mode Status Cell — Dark",
+      "kind": "custom",
+      "refersTo": "status-mode-dark",
+      "description": "Vim-style normal-mode segment with its directional separator; no dependency on icon fonts.",
+      "html": "<div class=\"ds-status\">Normal</div>",
+      "css": ".ds-status{font-family:\"Cascadia Code\",system-ui;position:relative;display:inline-grid;grid-auto-flow:column;align-items:center;gap:.25rem;padding:0 1.3em 0 .3rem;background:var(--color-mocha-green,#a6e3a1);color:hsl(from var(--color-mocha-text,#cdd6f4) h s 10)}.ds-status:after{content:\"\";position:absolute;right:-1em;height:100%;border-right:1.1em solid var(--color-mocha-green,#a6e3a1);border-top-right-radius:.5rem;border-bottom-right-radius:.5rem;z-index:10}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Developer's Workspace — Console Focused",
+    "overview": "A technical, personal, and direct workspace built from terminal conventions: monospaced text, command prompts, bordered panels, and a segmented Vim-style status line. The owner has confirmed the console focus and the existing Catppuccin palette. This document records the restored implementation, not a selected replacement page concept.\n\nThe approved direction favors flat panels distinguished by borders and background tones. Controls should remain precise and console-inspired while understandable without command knowledge. The current implementation is evidence, not proof that every interaction already meets that goal. Understanding business requirements is part of the professional positioning in `PRODUCT.md`, not a decorative motif.",
+    "keyCharacteristics": [
+      "Console identity with visible actions alongside commands.",
+      "Cascadia Code for the header; FiraCode for main content.",
+      "Catppuccin Latte and Mocha, with restrained tonal depth.",
+      "Rectangular panels and a distinctive segmented status line."
+    ],
+    "rules": [
+      {
+        "name": "The Palette Fidelity Rule",
+        "body": "Preserve the existing Catppuccin values. Do not silently turn this documentation pass into a palette correction or normalize the incomplete light-theme assignments.",
+        "section": "colors"
+      },
+      {
+        "name": "The Flat Workspace Rule",
+        "body": "Use tone and borders for hierarchy, not decorative floating-card shadows.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** preserve the console-focused workspace identity and Catppuccin palette.",
+      "**Do** keep actions understandable without requiring command knowledge.",
+      "**Do** use flat panels, borders, and tonal separation.",
+      "**Do** distinguish observed implementation details from approved future guidance."
+    ],
+    "donts": [
+      "**Don't** add decorative shadows to create floating panels.",
+      "**Don't** replace confirmed palette values or invent a new font pairing during documentation.",
+      "**Don't** present missing interaction states or light-theme assignments as already implemented.",
+      "**Don't** treat this record as approval of a replacement page layout."
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "title": "Confirmación del brief — Axel Nava",
+  "question": "Tu indicación ya define la composición. Confirma este brief o usa el comentario para corregirlo. Confirmarlo termina shape; no inicia implementación.",
+  "options": [
+    {
+      "id": "confirm-landing-brief",
+      "kind": "assigned",
+      "label": "Registro de experiencia + índice de proyectos",
+      "thesis": "Primero trayectoria cronológica; después proyectos con nombre y categoría a la izquierda y detalle a la derecha; contacto al final.",
+      "palette": ["#1e1e2e", "#11111b", "#cdd6f4", "#89b4fa", "#a6e3a1"],
+      "materials": ["Consola Catppuccin", "Paneles planos sin sombras decorativas", "Controles visibles sin comandos obligatorios"],
+      "viewport": "Identidad compacta y experiencia: fechas a la izquierda, puesto y aportaciones a la derecha, empezando por Unilink. Más abajo, proyectos usan nombre/índice y categoría a la izquierda, con contexto, aportación y evidencia a la derecha. En móvil se apilan en el mismo orden.",
+      "risk": "No inventar fechas freelance ni categorías comerciales; las métricas 50 % tiempo y 80 % RAM pertenecen a reportes de Unilink. No prometer código o capturas públicas de trabajo privado.",
+      "wireframe": {"cols": 12, "rows": 16, "regions": [
+        {"label": "Axel Nava · FullStack / web / desktop / tools · ES/EN", "x": 0, "y": 0, "w": 12, "h": 2},
+        {"label": "Oct 2025 — actualidad", "x": 0, "y": 2, "w": 3, "h": 4},
+        {"label": "Unilink · Analista de Desarrollo / migración .NET / Strategy / notificaciones / IA y E2E / resultados reportes", "x": 3, "y": 2, "w": 9, "h": 4, "accent": true},
+        {"label": "Experiencia anterior", "x": 0, "y": 6, "w": 3, "h": 2},
+        {"label": "Freelance · responsabilidades y aportaciones verificadas", "x": 3, "y": 6, "w": 9, "h": 2},
+        {"label": "Proyectos seleccionados", "x": 0, "y": 8, "w": 12, "h": 1},
+        {"label": "Nombre / índice del proyecto + categoría", "x": 0, "y": 9, "w": 3, "h": 5},
+        {"label": "Información del proyecto / contexto / aportación / tecnologías / evidencia disponible", "x": 3, "y": 9, "w": 9, "h": 5, "accent": true},
+        {"label": "Contacto · sin CV ni foto", "x": 0, "y": 14, "w": 12, "h": 2}
+      ]}
+    }
+  ],
+  "steer": true,
+  "buildPath": {"value": "code", "toggle": false}
+}
