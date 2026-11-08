@@ -34,3 +34,6 @@ pnpm-debug.log*
 .impeccable/review/
 .impeccable/questions/*.log
 .pi/work/
+
+# Engram local runtime data
+.engram/
