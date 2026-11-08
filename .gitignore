@@ -22,3 +22,12 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+# Local Pi runtime state
+.atl/
+
+# Local tooling artifacts (not for the repo)
+.playwright-mcp/
+.claude/
+.codex/
+.impeccable/
+.pi/work/
